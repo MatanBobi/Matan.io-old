@@ -8,7 +8,7 @@
   Gatsby's personal blog starter
 </h1>
 
-This starter is a fork of Gatsby starter blog, the most popular starter by far, only coming second to Gatsbey starter netlify cms. So I decided to combine the 2!
+This starter is a fork of Gatsby Starter Blog, the most popular starter by far – with second place being Gatsby Starter Netlify CMS. So I decided to combine the 2!
 
 ## 🚀 Quick start
 
