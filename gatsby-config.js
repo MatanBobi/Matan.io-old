@@ -55,7 +55,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        // edit below
+        // trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
     {
@@ -67,6 +68,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
+        // edit below
         icon: `content/assets/gatsby-icon.png`,
       },
     },
