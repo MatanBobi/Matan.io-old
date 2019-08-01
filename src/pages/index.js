@@ -6,6 +6,8 @@ import styled, { keyframes, css } from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
+import SunIcon from "../../content/assets/sun.svg"
+import CloudIcon from "../../content/assets/cloud.svg"
 
 class IndexPage extends React.Component {
     render() {
@@ -20,6 +22,12 @@ class IndexPage extends React.Component {
 
                         return (
                             <Fragment>
+                                <Clouds index={1} />
+                                <Clouds index={2} />
+                                <Clouds index={3} />
+                                <Clouds index={4} />
+                                <Clouds index={5} />
+                                <Sun />
                                 <SEO
                                     title="Home"
                                     keywords={[
@@ -30,9 +38,6 @@ class IndexPage extends React.Component {
                                     ]}
                                 />
                                 <IndexWrapper>
-                                    <Clouds index={1} />
-                                    <Clouds index={2} />
-                                    <Sun />
                                     <ImageWrapper>
                                         <Image
                                             fixed={
@@ -41,22 +46,43 @@ class IndexPage extends React.Component {
                                             }
                                             alt={author}
                                             style={{
-                                                minWidth: 200,
-                                                borderRadius: `100%`,
+                                                maxWidth: 200,
+                                                maxHeight: 200,
+                                                transform: `rotate(16deg)`,
+                                                borderRadius: `30px`,
+                                                boxShadow: `70px 70px 70px 5px rgba(94,188,207,0.25)`,
+                                                margin: `0 100px`,
                                             }}
                                             imgStyle={{
-                                                borderRadius: `50%`,
+                                                top: -18,
+                                                left: -16,
+                                                minWidth: 240,
+                                                minHeight: 240,
+                                                transform: `rotate(-16deg)`,
                                             }}
                                         />
                                     </ImageWrapper>
-                                    <FullName>Matan Borenkraout</FullName>
-                                    Frontend developer
-                                    <Link to="/blog/">
-                                        <Button marginTop="35px">
-                                            Go to Blog
-                                        </Button>
-                                    </Link>
+                                    <DataContainer>
+                                        <FullName>Matan Borenkraout</FullName>
+                                        <Description>
+                                            Frontend developer
+                                        </Description>
+                                        <StyledLink to="/blog/">
+                                            <Button
+                                                marginTop="35px"
+                                                background="#5ebccf"
+                                                radius="40px"
+                                                display="inline-block"
+                                            >
+                                                Visit blog
+                                            </Button>
+                                        </StyledLink>
+                                    </DataContainer>
                                 </IndexWrapper>
+                                <BigCircle index={1} />
+                                <BigCircle index={2} />
+                                <BigCircle index={3} />
+                                <BigCircle index={4} />
                             </Fragment>
                         )
                     }}
@@ -77,220 +103,118 @@ const animateRightToLeft = keyframes`
 
 const Clouds = styled.div`
     position: absolute;
-    top: ${Math.random() * 50}px;
-    right: 0;
-    animation-delay: ${({ index }) => (index - 1) * 10000}ms;
-    ${({ index }) => css`
-        animation: ${animateRightToLeft}
-            ${index * (Math.random() + 1) * 50000}ms ease-in-out infinite;
-    `}
-    ${({ index }) => {
-        const randomNumber = Math.random()
-        const size =
-            index * randomNumber * 18 < 12 ? 12 : index * randomNumber * 18
-        return css`
-            width: ${size}ch;
-            height: ${size}ch;
-        `
-    }};
     background-size: cover;
-    background-image: url(https://image.flaticon.com/icons/svg/414/414927.svg);
+    background-image: url(${CloudIcon});
+
+    ${({ index }) => {
+        switch (index) {
+            case 1:
+                return css`
+                    width: 167px;
+                    height: 102px;
+                    top: 200px;
+                    left: 290px;
+                `
+            case 2:
+                return css`
+                    width: 313px;
+                    height: 191px;
+                    top: 170px;
+                    left: 374px;
+                    opacity: 0.3;
+                `
+            case 3:
+                return css`
+                    width: 176px;
+                    height: 107px;
+                    top: 44px;
+                    left: 591px;
+                `
+            case 4:
+                return css`
+                    width: 431px;
+                    height: 263px;
+                    top: 64px;
+                    left: 65%;
+                    opacity: 0.3;
+                `
+            case 5:
+                return css`
+                    width: 203px;
+                    height: 124px;
+                    top: 218px;
+                    left: 80%;
+                `
+        }
+    }};
 `
 
 const Sun = styled.div`
     position: absolute;
     z-index: 1;
-    transform: rotate(135deg);
-    right: -68px;
-    top: -68px;
-    height: 20ch;
-    width: 20ch;
+    left: -100px;
+    top: -100px;
+    height: 250px;
+    width: 250px;
     background-size: cover;
-    background-image: url(https://image.flaticon.com/icons/svg/979/979585.svg);
+    background-image: url(${SunIcon});
+`
+
+const BigCircle = styled.div`
+    position: absolute;
+    background: #5ebccf;
+    opacity: 0.15;
+    border-radius: 50%;
+    height: 60vw;
+
+    ${({ index }) => {
+        switch (index) {
+            case 1:
+                return css`
+                    bottom: -49vw;
+                    left: -58vw;
+                    width: 100vw;
+                `
+            case 2:
+                return css`
+                    bottom: -55vw;
+                    left: -37vw;
+                    width: 110vw;
+                `
+            case 3:
+                return css`
+                    bottom: -54vw;
+                    left: 0;
+                    width: 140vw;
+                `
+            case 4:
+                return css`
+                    bottom: -51vw;
+                    left: 25vw;
+                    width: 130vw;
+                `
+        }
+    }}
 `
 
 const IndexWrapper = styled.div`
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
     font-family: "Montserrat", sans-serif;
     height: 100%;
 `
 
 const FullName = styled.div`
-    color: #1c1c1c;
-    font-size: 24px;
+    color: #363636;
+    font-size: 32px;
+    font-weight: 900;
     margin-top: 8px;
 `
 
-const Spin1 = keyframes`
-  0% {
-    transform: rotate(0);
-}
-  100% {
-    transform: rotate(360deg);
-}`
-
-const Spin2 = keyframes`
-  0% {
-    transform: rotate(-144deg);
-}
-  100% {
-    transform: rotate(216deg);
-}`
-
-const Spin3 = keyframes`
-  0% {
-    transform: rotate(216deg);
-}
-  100% {
-    transform: rotate(-144deg);
-}`
-
-const Circle = styled.div`
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    transition: all 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
-    border-radius: 121% 128% 125% 124%/125% 120% 127% 125%;
-`
-
-const FirstCircle = styled(Circle)`
-    left: -5px;
-    top: -5px;
-    height: 210px;
-    width: 210px;
-    margin: 0 auto;
-    //background: #028090;
-    ${Circle}:nth-child(1) {
-        transform-origin: 50%-0.3% 50%;
-        animation: ${Spin1} 3.5s linear infinite reverse;
-        animation-play-state: paused;
-        background: #028090;
-    }
-    ${Circle}:nth-child(2) {
-        transform-origin: 50% 50%+0.3%;
-        animation: ${Spin2} 3.5s linear infinite reverse;
-        animation-play-state: paused;
-        background: #028090;
-    }
-    ${Circle}:nth-child(3) {
-        transform-origin: 50%+0.3% 50%;
-        animation: ${Spin3} 3.5s linear infinite reverse;
-        animation-play-state: paused;
-        background: #028090;
-    }
-    ${Circle}:nth-child(4) {
-        box-sizing: border-box;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 121% 128% 125% 124%/125% 120% 127% 125%;
-        background: #028090;
-    }
-`
-
-const SecondCircle = styled(Circle)`
-    left: -5px;
-    top: -5px;
-    height: 210px;
-    width: 210px;
-    margin: 0 auto;
-    ${Circle}:nth-child(1) {
-        transform-origin: 50%-0.3% 50%;
-        animation: ${Spin1} 2s linear infinite;
-        animation-play-state: paused;
-        background: #00a896;
-    }
-    ${Circle}:nth-child(2) {
-        transform-origin: 50% 50%+0.3%;
-        animation: ${Spin2} 2s linear infinite;
-        animation-play-state: paused;
-        background: #00a896;
-    }
-    ${Circle}:nth-child(3) {
-        transform-origin: 50%+0.3% 50%;
-        animation: ${Spin3} 2s linear infinite;
-        animation-play-state: paused;
-        background: #00a896;
-    }
-    ${Circle}:nth-child(4) {
-        box-sizing: border-box;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 121% 128% 125% 124%/125% 120% 127% 125%;
-        background: #00a896;
-    }
-`
-
-const ThirdCircle = styled(Circle)`
-    left: -5px;
-    top: -5px;
-    height: 210px;
-    width: 210px;
-    margin: 0 auto;
-    ${Circle}:nth-child(1) {
-        transform-origin: 50%-0.3% 50%;
-        animation: ${Spin1} 2.5s linear infinite reverse;
-        animation-play-state: paused;
-        background: #02c39a;
-    }
-    ${Circle}:nth-child(2) {
-        transform-origin: 50% 50%+0.3%;
-        animation: ${Spin2} 2.5s linear infinite reverse;
-        animation-play-state: paused;
-        background: #02c39a;
-    }
-    ${Circle}:nth-child(3) {
-        transform-origin: 50%+0.3% 50%;
-        animation: ${Spin3} 2.5s linear infinite reverse;
-        animation-play-state: paused;
-        background: #02c39a;
-    }
-    ${Circle}:nth-child(4) {
-        box-sizing: border-box;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 121% 128% 125% 124%/125% 120% 127% 125%;
-        background: #02c39a;
-    }
-`
-
-const FourthCircle = styled(Circle)`
-    left: -5px;
-    top: -5px;
-    height: 210px;
-    width: 210px;
-    margin: 0 auto;
-    ${Circle}:nth-child(1) {
-        transform-origin: 50%-0.3% 50%;
-        animation: ${Spin1} 4s linear infinite;
-        animation-play-state: paused;
-        background: #05668d;
-    }
-    ${Circle}:nth-child(2) {
-        transform-origin: 50% 50%+0.3%;
-        animation: ${Spin2} 4s linear infinite;
-        animation-play-state: paused;
-        background: #05668d;
-    }
-    ${Circle}:nth-child(3) {
-        transform-origin: 50%+0.3% 50%;
-        animation: ${Spin3} 4s linear infinite;
-        animation-play-state: paused;
-        background: #05668d;
-    }
-    ${Circle}:nth-child(4) {
-        box-sizing: border-box;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 121% 128% 125% 124%/125% 120% 127% 125%;
-        background: #05668d;
-    }
+const Description = styled.div`
+    font-size: 20px;
+    color: #ffffff;
 `
 
 const ImageWrapper = styled.div`
@@ -298,35 +222,25 @@ const ImageWrapper = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
+`
 
-    &:hover {
-        ${Circle} {
-            animation-play-state: running;
-        }
-        ${FirstCircle} {
-            top: -16px;
-            left: -16px;
-        }
-        ${SecondCircle} {
-            top: 16px;
-            left: 16px;
-        }
-        ${ThirdCircle} {
-            top: -12px;
-            left: 12px;
-        }
-        ${FourthCircle} {
-            top: 12px;
-            left: -12px;
-        }
-    }
+const DataContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+`
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    width: max-content;
+    box-shadow: none;
 `
 
 const indexQuery = graphql`
     query IndexQuery {
         avatar: file(absolutePath: { regex: "/profile-pic.jpeg/" }) {
             childImageSharp {
-                fixed(width: 200, height: 200) {
+                fixed(width: 400, height: 400) {
                     ...GatsbyImageSharpFixed
                 }
             }

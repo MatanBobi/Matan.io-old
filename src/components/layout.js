@@ -78,9 +78,10 @@ class Layout extends React.Component {
 
 const Wrapper = styled.div`
   position: relative;
-  min-height: 100vh;
+  max-height: 100vh;
   color: #878787;
-  background: rgb(125,208,254);
+  background-image: linear-gradient(330deg, #fffcd4, #98e0ef);
+  overflow: hidden;
 `
 
 const Footer = styled.footer`
