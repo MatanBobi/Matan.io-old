@@ -20,7 +20,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
-        path: `${__dirname}/content/assets`,
+        path: `${__dirname}/src/icons`,
         name: `assets`,
       }
     },

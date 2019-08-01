@@ -6,8 +6,8 @@ import styled, { keyframes, css } from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
-import SunIcon from "../../content/assets/sun.svg"
-import CloudIcon from "../../content/assets/cloud.svg"
+import SunIcon from "../icons/sun.svg"
+import CloudIcon from "../icons/cloud.svg"
 
 class IndexPage extends React.Component {
     render() {
