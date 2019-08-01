@@ -20,16 +20,16 @@ class Layout extends React.Component {
             marginTop: 0,
           }}
         >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
-          >
-            {title}
-          </Link>
+          {/*<Link*/}
+          {/*style={{*/}
+          {/*boxShadow: `none`,*/}
+          {/*textDecoration: `none`,*/}
+          {/*color: `inherit`,*/}
+          {/*}}*/}
+          {/*to={location.pathname === blogPath ? `/blog/` : `/`}*/}
+          {/*>*/}
+          {/*{title}*/}
+          {/*</Link>*/}
         </h1>
       )
     } else {
@@ -57,9 +57,11 @@ class Layout extends React.Component {
       <Wrapper>
         <div
           style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            maxWidth: rhythm(24),
+            display: 'flex',
+            justifyContent:'center',
+            alignItems: 'center',
+            minWidth: '100vw',
+            minHeight: '100vh',
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
         >
@@ -67,9 +69,7 @@ class Layout extends React.Component {
           <main>{children}</main>
         </div>
         <Footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          © {new Date().getFullYear()} Matan Borenkraout
         </Footer>
       </Wrapper>
     )
@@ -77,11 +77,13 @@ class Layout extends React.Component {
 }
 
 const Wrapper = styled.div`
+  position: relative;
   min-height: 100vh;
+  color: #878787;
+  background: rgb(125,208,254);
 `
 
 const Footer = styled.footer`
-  text-align: center;
   margin: 24px;
 `
 
