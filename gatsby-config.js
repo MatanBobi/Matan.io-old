@@ -18,6 +18,13 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,

@@ -101,10 +101,8 @@ const animateRightToLeft = keyframes`
   }
 `
 
-const Clouds = styled.div`
+const Clouds = styled(CloudIcon)`
     position: absolute;
-    background-size: cover;
-    background-image: url(${CloudIcon});
 
     ${({ index }) => {
         switch (index) {
@@ -149,15 +147,13 @@ const Clouds = styled.div`
     }};
 `
 
-const Sun = styled.div`
+const Sun = styled(SunIcon)`
     position: absolute;
     z-index: 1;
     left: -100px;
     top: -100px;
     height: 250px;
     width: 250px;
-    background-size: cover;
-    background-image: url(${SunIcon});
 `
 
 const BigCircle = styled.div`
