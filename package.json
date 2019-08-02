@@ -1,12 +1,9 @@
 {
-  "name": "gatsby-personal-starter-blog",
+  "name": "useBobi",
   "private": true,
-  "description": "A personal blog starter for a blog powered by Netlify CMS, based on the default blog starter",
+  "description": "Matan Borenkraout's personal site",
   "version": "0.1.0",
-  "author": "Thomas Wang <thomas@wang.sh>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
+  "author": "Matan Borenkraout",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.3.25",

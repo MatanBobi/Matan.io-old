@@ -94,15 +94,18 @@ class IndexPage extends React.Component {
 
 const animateRightToLeft = keyframes`
   0%{
-    transform: translateX(-100vw);
+    transform: translateX(-50vw);
   }
   100%{
-      transform: translateX(100vw);
+      transform: translateX(50vw);
   }
 `
 
 const Clouds = styled(CloudIcon)`
     position: absolute;
+    // animation: ${animateRightToLeft}
+    //     ${({ index }) => index * (Math.random() + 1) * 200000}ms ease-in
+    //     infinite;
 
     ${({ index }) => {
         switch (index) {
@@ -112,6 +115,13 @@ const Clouds = styled(CloudIcon)`
                     height: 102px;
                     top: 200px;
                     left: 290px;
+
+                    @media (max-width: 600px) {
+                        width: 84px;
+                        height: 51px;
+                        top: 10%;
+                        left: 10%;
+                    }
                 `
             case 2:
                 return css`
@@ -120,6 +130,13 @@ const Clouds = styled(CloudIcon)`
                     top: 170px;
                     left: 374px;
                     opacity: 0.3;
+
+                    @media (max-width: 600px) {
+                        width: 157px;
+                        height: 96px;
+                        top: 5%;
+                        left: 15%;
+                    }
                 `
             case 3:
                 return css`
@@ -127,6 +144,13 @@ const Clouds = styled(CloudIcon)`
                     height: 107px;
                     top: 44px;
                     left: 591px;
+
+                    @media (max-width: 600px) {
+                        width: 88px;
+                        height: 54px;
+                        top: 2%;
+                        left: 70%;
+                    }
                 `
             case 4:
                 return css`
@@ -135,6 +159,12 @@ const Clouds = styled(CloudIcon)`
                     top: 64px;
                     left: 65%;
                     opacity: 0.3;
+                    @media (max-width: 600px) {
+                        width: 216px;
+                        height: 132px;
+                        top: 1%;
+                        left: 85%;
+                    }
                 `
             case 5:
                 return css`
@@ -142,6 +172,9 @@ const Clouds = styled(CloudIcon)`
                     height: 124px;
                     top: 218px;
                     left: 80%;
+                    @media (max-width: 600px) {
+                        display: none;
+                    }
                 `
         }
     }};
@@ -154,6 +187,13 @@ const Sun = styled(SunIcon)`
     top: -100px;
     height: 250px;
     width: 250px;
+
+    @media (max-width: 600px) {
+        height: 200px;
+        width: 200px;
+        left: -80px;
+        top: -80px;
+    }
 `
 
 const BigCircle = styled.div`
@@ -199,6 +239,10 @@ const IndexWrapper = styled.div`
     align-items: center;
     font-family: "Montserrat", sans-serif;
     height: 100%;
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
 `
 
 const FullName = styled.div`
@@ -224,6 +268,11 @@ const DataContainer = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
+
+    @media (max-width: 600px) {
+        margin: 4px 0;
+        align-items: center;
+    }
 `
 
 const StyledLink = styled(Link)`
