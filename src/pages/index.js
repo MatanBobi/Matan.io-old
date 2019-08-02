@@ -8,6 +8,7 @@ import SEO from "../components/seo"
 import Button from "../components/button"
 import SunIcon from "../icons/sun.svg"
 import CloudIcon from "../icons/cloud.svg"
+import MoonIcon from "../icons/moon.svg"
 
 class IndexPage extends React.Component {
     render() {
@@ -28,6 +29,7 @@ class IndexPage extends React.Component {
                                 <Clouds index={4} />
                                 <Clouds index={5} />
                                 <Sun />
+                                <Moon />
                                 <SEO
                                     title="Home"
                                     keywords={[
@@ -106,7 +108,16 @@ const Clouds = styled(CloudIcon)`
     // animation: ${animateRightToLeft}
     //     ${({ index }) => index * (Math.random() + 1) * 200000}ms ease-in
     //     infinite;
-
+    ${() => {
+        const currentTime = new Date().getHours()
+        return currentTime > 6 && currentTime < 20
+            ? css`
+                  display: block;
+              `
+            : css`
+                  display: none;
+              `
+    }};
     ${({ index }) => {
         switch (index) {
             case 1:
@@ -188,6 +199,17 @@ const Sun = styled(SunIcon)`
     height: 250px;
     width: 250px;
 
+    ${() => {
+        const currentTime = new Date().getHours()
+        return currentTime > 6 && currentTime < 20
+            ? css`
+                  display: block;
+              `
+            : css`
+                  display: none;
+              `
+    }};
+
     @media (max-width: 600px) {
         height: 200px;
         width: 200px;
@@ -196,12 +218,42 @@ const Sun = styled(SunIcon)`
     }
 `
 
+const Moon = styled(MoonIcon)`
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    height: 198px;
+    width: 198px;
+
+    ${() => {
+        const currentTime = new Date().getHours()
+        return currentTime > 6 && currentTime < 20
+            ? css`
+                  display: none;
+              `
+            : css`
+                  display: block;
+              `
+    }};
+`
+
 const BigCircle = styled.div`
     position: absolute;
     background: #5ebccf;
-    opacity: 0.15;
     border-radius: 50%;
     height: 60vw;
+
+    ${() => {
+        const currentTime = new Date().getHours()
+        return currentTime > 6 && currentTime < 20
+            ? css`
+                  opacity: 0.15;
+              `
+            : css`
+                  opacity: 0.85;
+              `
+    }};
 
     ${({ index }) => {
         switch (index) {
@@ -250,6 +302,7 @@ const FullName = styled.div`
     font-size: 32px;
     font-weight: 900;
     margin-top: 8px;
+    z-index: 1;
 `
 
 const Description = styled.div`
@@ -273,6 +326,21 @@ const DataContainer = styled.div`
         margin: 4px 0;
         align-items: center;
     }
+
+    ${() => {
+        const currentTime = new Date().getHours()
+        return currentTime > 6 && currentTime < 20
+            ? css``
+            : css`
+                  & > ${FullName} {
+                      color: #ffffff;
+                  }
+
+                  & > ${Description} {
+                      color: #c0c0c0;
+                  }
+              `
+    }};
 `
 
 const StyledLink = styled(Link)`
