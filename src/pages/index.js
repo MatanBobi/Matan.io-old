@@ -72,7 +72,6 @@ class IndexPage extends React.Component {
                                         <StyledLink to="/blog/">
                                             <Button
                                                 marginTop="35px"
-                                                background="#5ebccf"
                                                 radius="40px"
                                                 display="inline-block"
                                             >
@@ -108,9 +107,8 @@ const Clouds = styled(CloudIcon)`
     // animation: ${animateRightToLeft}
     //     ${({ index }) => index * (Math.random() + 1) * 200000}ms ease-in
     //     infinite;
-    ${() => {
-        const currentTime = new Date().getHours()
-        return currentTime > 6 && currentTime < 20
+    ${({ theme }) => {
+        return theme.isDayMode
             ? css`
                   display: block;
               `
@@ -199,9 +197,8 @@ const Sun = styled(SunIcon)`
     height: 250px;
     width: 250px;
 
-    ${() => {
-        const currentTime = new Date().getHours()
-        return currentTime > 6 && currentTime < 20
+    ${({ theme }) => {
+        return theme.isDayMode
             ? css`
                   display: block;
               `
@@ -226,9 +223,8 @@ const Moon = styled(MoonIcon)`
     height: 198px;
     width: 198px;
 
-    ${() => {
-        const currentTime = new Date().getHours()
-        return currentTime > 6 && currentTime < 20
+    ${({ theme }) => {
+        return theme.isDayMode
             ? css`
                   display: none;
               `
@@ -240,13 +236,12 @@ const Moon = styled(MoonIcon)`
 
 const BigCircle = styled.div`
     position: absolute;
-    background: #5ebccf;
     border-radius: 50%;
     height: 60vw;
+    transition: all 300ms ease-in-out;
 
-    ${() => {
-        const currentTime = new Date().getHours()
-        return currentTime > 6 && currentTime < 20
+    ${({ theme }) => {
+        return theme.isDayMode
             ? css`
                   opacity: 0.15;
               `
@@ -255,31 +250,35 @@ const BigCircle = styled.div`
               `
     }};
 
-    ${({ index }) => {
+    ${({ index, theme }) => {
         switch (index) {
             case 1:
                 return css`
                     bottom: -49vw;
                     left: -58vw;
                     width: 100vw;
+                    background: ${theme.isDayMode ? "#5ebccf" : "#4c64a0"};
                 `
             case 2:
                 return css`
                     bottom: -55vw;
                     left: -37vw;
                     width: 110vw;
+                    background: ${theme.isDayMode ? "#5ebccf" : "#2f488c"};
                 `
             case 3:
                 return css`
                     bottom: -54vw;
                     left: 0;
                     width: 140vw;
+                    background: ${theme.isDayMode ? "#5ebccf" : "#293060"};
                 `
             case 4:
                 return css`
                     bottom: -51vw;
                     left: 25vw;
                     width: 130vw;
+                    background: ${theme.isDayMode ? "#5ebccf" : "#485f9c"};
                 `
         }
     }}
@@ -327,9 +326,8 @@ const DataContainer = styled.div`
         align-items: center;
     }
 
-    ${() => {
-        const currentTime = new Date().getHours()
-        return currentTime > 6 && currentTime < 20
+    ${({ theme }) => {
+        return theme.isDayMode
             ? css``
             : css`
                   & > ${FullName} {

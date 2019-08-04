@@ -38,7 +38,7 @@ This starter is a fork of Gatsby Starter Blog, the most popular starter by far â
 
     _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
 
-    Open the `my-blog-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+    Open the `my-blog-starter` directory in your code editor of choice and edit `src/pages/Footer.js`. Save your changes and the browser will update in real time!
 
 ## ðŸŽ“ Learning Gatsby
 
