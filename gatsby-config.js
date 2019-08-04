@@ -70,11 +70,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Matan Borenkraout`,
+        short_name: `MatanBobi`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#98e0ef`,
         display: `minimal-ui`,
         // edit below
         icon: `content/assets/gatsby-icon.png`,

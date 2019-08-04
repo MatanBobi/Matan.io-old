@@ -6,9 +6,15 @@ import styled, { keyframes, css } from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
+
+// Icons
 import SunIcon from "../icons/sun.svg"
 import CloudIcon from "../icons/cloud.svg"
 import MoonIcon from "../icons/moon.svg"
+import GroundOne from "../icons/ground-1.svg"
+import GroundTwo from "../icons/ground-2.svg"
+import GroundThree from "../icons/ground-3.svg"
+import GroundFour from "../icons/ground-4.svg"
 
 class IndexPage extends React.Component {
     render() {
@@ -52,7 +58,6 @@ class IndexPage extends React.Component {
                                                 maxHeight: 200,
                                                 transform: `rotate(16deg)`,
                                                 borderRadius: `30px`,
-                                                boxShadow: `70px 70px 70px 5px rgba(94,188,207,0.25)`,
                                                 margin: `0 100px`,
                                             }}
                                             imgStyle={{
@@ -80,10 +85,10 @@ class IndexPage extends React.Component {
                                         </StyledLink>
                                     </DataContainer>
                                 </IndexWrapper>
-                                <BigCircle index={1} />
-                                <BigCircle index={2} />
-                                <BigCircle index={3} />
-                                <BigCircle index={4} />
+                                <GroundOneStyled />
+                                <GroundTwoStyled />
+                                <GroundThreeStyled />
+                                <GroundFourStyled />
                             </Fragment>
                         )
                     }}
@@ -100,6 +105,46 @@ const animateRightToLeft = keyframes`
   100%{
       transform: translateX(50vw);
   }
+`
+
+const GroundOneStyled = styled(GroundOne)`
+    position: absolute;
+    top: 82%;
+    left: -25%;
+    z-index: 1;
+    transition: fill 300ms ease-in-out;
+    fill: ${({ theme }) =>
+        theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#4C64A0"};
+`
+
+const GroundFourStyled = styled(GroundFour)`
+    position: absolute;
+    top: 91%;
+    left: -22%;
+    z-index: 4;
+    transition: fill 300ms ease-in-out;
+    fill: ${({ theme }) =>
+        theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#293060"};
+`
+
+const GroundTwoStyled = styled(GroundTwo)`
+    position: absolute;
+    top: 87%;
+    left: -7%;
+    z-index: 2;
+    transition: fill 300ms ease-in-out;
+    fill: ${({ theme }) =>
+        theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#2f488c"};
+`
+
+const GroundThreeStyled = styled(GroundThree)`
+    position: absolute;
+    top: 87%;
+    left: 37%;
+    z-index: 3;
+    transition: fill 300ms ease-in-out;
+    fill: ${({ theme }) =>
+        theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#485f9c"};
 `
 
 const Clouds = styled(CloudIcon)`
@@ -192,18 +237,19 @@ const Clouds = styled(CloudIcon)`
 const Sun = styled(SunIcon)`
     position: absolute;
     z-index: 1;
-    left: -100px;
-    top: -100px;
     height: 250px;
     width: 250px;
-
+    fill: #fffcd4;
+    transition: all 750ms ease-in-out;
     ${({ theme }) => {
         return theme.isDayMode
             ? css`
-                  display: block;
+                  left: -100px;
+                  top: -100px;
               `
             : css`
-                  display: none;
+                  left: -20%;
+                  top: 48px;
               `
     }};
 
@@ -218,70 +264,22 @@ const Sun = styled(SunIcon)`
 const Moon = styled(MoonIcon)`
     position: absolute;
     z-index: 1;
-    right: 0;
-    top: 0;
-    height: 198px;
-    width: 198px;
+    height: 140px;
+    width: 140px;
+    filter: drop-shadow(0 0 60px rgba(255, 255, 255, 0.95));
+    transition: all 700ms ease-in-out;
 
     ${({ theme }) => {
         return theme.isDayMode
             ? css`
-                  display: none;
+                  right: -12%;
+                  top: 34%;
               `
             : css`
-                  display: block;
+                  right: 4%;
+                  top: 5%;
               `
     }};
-`
-
-const BigCircle = styled.div`
-    position: absolute;
-    border-radius: 50%;
-    height: 60vw;
-    transition: all 300ms ease-in-out;
-
-    ${({ theme }) => {
-        return theme.isDayMode
-            ? css`
-                  opacity: 0.15;
-              `
-            : css`
-                  opacity: 0.85;
-              `
-    }};
-
-    ${({ index, theme }) => {
-        switch (index) {
-            case 1:
-                return css`
-                    bottom: -49vw;
-                    left: -58vw;
-                    width: 100vw;
-                    background: ${theme.isDayMode ? "#5ebccf" : "#4c64a0"};
-                `
-            case 2:
-                return css`
-                    bottom: -55vw;
-                    left: -37vw;
-                    width: 110vw;
-                    background: ${theme.isDayMode ? "#5ebccf" : "#2f488c"};
-                `
-            case 3:
-                return css`
-                    bottom: -54vw;
-                    left: 0;
-                    width: 140vw;
-                    background: ${theme.isDayMode ? "#5ebccf" : "#293060"};
-                `
-            case 4:
-                return css`
-                    bottom: -51vw;
-                    left: 25vw;
-                    width: 130vw;
-                    background: ${theme.isDayMode ? "#5ebccf" : "#485f9c"};
-                `
-        }
-    }}
 `
 
 const IndexWrapper = styled.div`
@@ -314,6 +312,19 @@ const ImageWrapper = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
+
+    .gatsby-image-wrapper {
+        transition: all 750ms ease-in-out;
+        transition-delay: 150ms;
+        ${({ theme }) =>
+            theme.isDayMode
+                ? css`
+                      box-shadow: 70px 70px 70px 5px rgba(94, 188, 207, 0.25);
+                  `
+                : css`
+                      box-shadow: -70px 70px 70px 5px rgba(0, 0, 0, 0.25);
+                  `};
+    }
 `
 
 const DataContainer = styled.div`

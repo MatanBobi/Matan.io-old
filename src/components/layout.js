@@ -1,5 +1,5 @@
 // 3rd Party
-import React from "react"
+import React, { useEffect } from "react"
 import { Link } from "gatsby"
 import styled, { css, ThemeProvider } from "styled-components"
 
@@ -7,20 +7,35 @@ import styled, { css, ThemeProvider } from "styled-components"
 import Footer from "./Footer.js"
 
 // Hooks
-import useToggle from '../hooks/useToggle';
+import useToggle from "../hooks/useToggle"
 
 // Utils
 import { rhythm, scale } from "../utils/typography"
 
-const Layout = ({location, title, children}) => {
+const Layout = ({ location, title, children }) => {
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
     const currentTime = new Date().getHours()
     const [isDayMode, toggleDayMode] = useToggle(
         currentTime > 6 && currentTime < 20
     )
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            if (
+                (currentTime > 6 && currentTime < 20 && !isDayMode) ||
+                (currentTime < 7 || (currentTime > 19 && isDayMode))
+            ) {
+                toggleDayMode()
+            }
+        }, 60000 * 60)
+        return () => {
+            clearInterval(timer)
+        }
+    }, [isDayMode])
+
     const theme = {
-        isDayMode
+        isDayMode,
     }
 
     let header
@@ -70,7 +85,7 @@ const Layout = ({location, title, children}) => {
     return (
         <ThemeProvider theme={theme}>
             <Wrapper>
-              <div
+                <div
                     style={{
                         display: "flex",
                         justifyContent: "center",
@@ -80,8 +95,8 @@ const Layout = ({location, title, children}) => {
                         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
                     }}
                 >
-                {/*<button onClick={() => toggleDayMode()}>Toggle</button>*/}
-                <header>{header}</header>
+                    <button onClick={() => toggleDayMode()}>Toggle</button>
+                    <header>{header}</header>
                     <main>{children}</main>
                 </div>
                 <Footer />
@@ -94,7 +109,7 @@ const Wrapper = styled.div`
     position: relative;
     max-height: 100vh;
     color: #878787;
-    ${({theme}) => {
+    ${({ theme }) => {
         return theme.isDayMode
             ? css`
                   background-image: linear-gradient(330deg, #fffcd4, #98e0ef);

@@ -46,6 +46,7 @@ const FooterWrapper = styled.div`
     position: fixed;
     bottom: 20px;
     left: 50%;
+    z-index: 5;
 `
 
 const Medium = styled(MediumIcon)`
