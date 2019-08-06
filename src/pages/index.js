@@ -15,6 +15,7 @@ import GroundOne from "../icons/ground-1.svg"
 import GroundTwo from "../icons/ground-2.svg"
 import GroundThree from "../icons/ground-3.svg"
 import GroundFour from "../icons/ground-4.svg"
+import Stars from "../icons/stars.svg"
 
 class IndexPage extends React.Component {
     render() {
@@ -89,6 +90,7 @@ class IndexPage extends React.Component {
                                 <GroundTwoStyled />
                                 <GroundThreeStyled />
                                 <GroundFourStyled />
+                                <StarsStyled />
                             </Fragment>
                         )
                     }}
@@ -145,6 +147,27 @@ const GroundThreeStyled = styled(GroundThree)`
     transition: fill 300ms ease-in-out;
     fill: ${({ theme }) =>
         theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#485f9c"};
+`
+
+const StarsStyled = styled(Stars)`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 750ms opacity ease-in-out;
+
+    ${({ theme }) => {
+        return theme.isDayMode
+            ? css`
+                  opacity: 0;
+                  visibility: hidden;
+              `
+            : css`
+                  visibility: visible;
+                  opacity: 0.75;
+              `
+    }};
 `
 
 const Clouds = styled(CloudIcon)`
@@ -288,6 +311,8 @@ const IndexWrapper = styled.div`
     align-items: center;
     font-family: "Montserrat", sans-serif;
     height: 100%;
+    z-index: 2;
+    position: relative;
 
     @media (max-width: 600px) {
         flex-direction: column;

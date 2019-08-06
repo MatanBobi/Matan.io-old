@@ -40,19 +40,22 @@ Footer.propTypes = {}
 
 const StyledLink = styled.a`
     box-shadow: none;
+    margin: 0 8px;
 `
 
 const FooterWrapper = styled.div`
     position: fixed;
     bottom: 20px;
     left: 50%;
+    
+    display: flex;
+    align-items: center;
     z-index: 5;
 `
 
 const Medium = styled(MediumIcon)`
     width: 32px;
     height: 32px;
-    margin: 0 8px;
     cursor: pointer;
     fill: ${({ theme }) => (theme.isDayMode ? "#363636" : "#FFFFFF")};
     transition: all 300ms ease-in-out;
@@ -61,7 +64,6 @@ const Medium = styled(MediumIcon)`
 const Linkedin = styled(LinkedinIcon)`
     width: 32px;
     height: 32px;
-    margin: 0 8px;
     cursor: pointer;
     fill: ${({ theme }) => (theme.isDayMode ? "#363636" : "#FFFFFF")};
     transition: all 300ms ease-in-out;
@@ -70,7 +72,6 @@ const Linkedin = styled(LinkedinIcon)`
 const Twitter = styled(TwitterIcon)`
     width: 32px;
     height: 32px;
-    margin: 0 8px;
     cursor: pointer;
     fill: ${({ theme }) => (theme.isDayMode ? "#363636" : "#FFFFFF")};
     transition: all 300ms ease-in-out;
