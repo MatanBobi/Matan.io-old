@@ -95,7 +95,12 @@ const Layout = ({ location, title, children }) => {
                         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
                     }}
                 >
-                    <button style={{zIndex: 1}} onClick={() => toggleDayMode()}>Toggle</button>
+                    <button
+                        style={{ zIndex: 2 }}
+                        onClick={() => toggleDayMode()}
+                    >
+                        Toggle
+                    </button>
                     <header>{header}</header>
                     <main>{children}</main>
                 </div>
@@ -109,20 +114,47 @@ const Wrapper = styled.div`
     position: relative;
     max-height: 100vh;
     color: #878787;
-    ${({ theme }) => {
-        return theme.isDayMode
-            ? css`
-                  background-image: linear-gradient(330deg, #fffcd4, #98e0ef);
-              `
-            : css`
-                  background-image: radial-gradient(
-                      circle at 60% 50%,
-                      #638aba,
-                      #222e54
-                  );
-              `
-    }};
+    transition: all 500ms ease-in-out;
     overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: opacity 700ms ease-in-out;
+        background-image: linear-gradient(330deg, #fffcd4, #98e0ef);
+        ${({ theme }) => {
+            return theme.isDayMode
+                ? css`
+                      opacity: 1;
+                  `
+                : css`
+                      opacity: 0;
+                  `
+        }}
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: opacity 700ms ease-in-out;
+        background-image: radial-gradient(circle at 60% 50%, #638aba, #222e54);
+        ${({ theme }) => {
+            return theme.isDayMode
+                ? css`
+                      opacity: 0;
+                  `
+                : css`
+                      opacity: 1;
+                  `
+        }}
+    }
 `
 
 export default Layout

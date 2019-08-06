@@ -114,7 +114,7 @@ const GroundOneStyled = styled(GroundOne)`
     top: 82%;
     left: -25%;
     z-index: 1;
-    transition: fill 300ms ease-in-out;
+    transition: fill 500ms ease-in-out;
     fill: ${({ theme }) =>
         theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#4C64A0"};
 `
@@ -124,7 +124,7 @@ const GroundFourStyled = styled(GroundFour)`
     top: 91%;
     left: -22%;
     z-index: 4;
-    transition: fill 300ms ease-in-out;
+    transition: fill 500ms ease-in-out;
     fill: ${({ theme }) =>
         theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#293060"};
 `
@@ -134,7 +134,7 @@ const GroundTwoStyled = styled(GroundTwo)`
     top: 87%;
     left: -7%;
     z-index: 2;
-    transition: fill 300ms ease-in-out;
+    transition: fill 500ms ease-in-out;
     fill: ${({ theme }) =>
         theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#2f488c"};
 `
@@ -144,13 +144,14 @@ const GroundThreeStyled = styled(GroundThree)`
     top: 87%;
     left: 37%;
     z-index: 3;
-    transition: fill 300ms ease-in-out;
+    transition: fill 500ms ease-in-out;
     fill: ${({ theme }) =>
         theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#485f9c"};
 `
 
 const StarsStyled = styled(Stars)`
     position: absolute;
+    z-index: 1;
     top: 0;
     left: 0;
     width: 100%;
@@ -347,7 +348,7 @@ const ImageWrapper = styled.div`
                       box-shadow: 70px 70px 70px 5px rgba(94, 188, 207, 0.25);
                   `
                 : css`
-                      box-shadow: -70px 70px 70px 5px rgba(0, 0, 0, 0.25);
+                      box-shadow: -50px 50px 50px 5px rgba(21,28,68,0.25)
                   `};
     }
 `
