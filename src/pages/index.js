@@ -102,14 +102,16 @@ class IndexPage extends React.Component {
 
 const animateRightToLeft = keyframes`
   0%{
-    transform: translateX(-50vw);
+    transform: translateX(0);
   }
   100%{
-      transform: translateX(50vw);
+      transform: translateX(0);      
   }
 `
 
 const GroundOneStyled = styled(GroundOne)`
+    width: 2469px;
+    height: 786px;
     position: absolute;
     top: 82%;
     left: -25%;
@@ -117,9 +119,16 @@ const GroundOneStyled = styled(GroundOne)`
     transition: fill 500ms ease-in-out;
     fill: ${({ theme }) =>
         theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#4C64A0"};
+
+    @media (max-width: 600px) {
+        width: 618px;
+        height: 196px;
+    }
 `
 
 const GroundFourStyled = styled(GroundFour)`
+    width: 1958px;
+    height: 537px;
     position: absolute;
     top: 91%;
     left: -22%;
@@ -127,9 +136,17 @@ const GroundFourStyled = styled(GroundFour)`
     transition: fill 500ms ease-in-out;
     fill: ${({ theme }) =>
         theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#293060"};
+
+    @media (max-width: 600px) {
+        width: 489px;
+        height: 268px;
+        top: 83%;
+    }
 `
 
 const GroundTwoStyled = styled(GroundTwo)`
+    width: 2204px;
+    height: 592px;
     position: absolute;
     top: 87%;
     left: -7%;
@@ -137,9 +154,18 @@ const GroundTwoStyled = styled(GroundTwo)`
     transition: fill 500ms ease-in-out;
     fill: ${({ theme }) =>
         theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#2f488c"};
+
+    @media (max-width: 600px) {
+        width: 551px;
+        height: 148px;
+        top: 88%;
+        left: -6%;
+    }
 `
 
 const GroundThreeStyled = styled(GroundThree)`
+    width: 2225px;
+    height: 601px;
     position: absolute;
     top: 87%;
     left: 37%;
@@ -147,6 +173,13 @@ const GroundThreeStyled = styled(GroundThree)`
     transition: fill 500ms ease-in-out;
     fill: ${({ theme }) =>
         theme.isDayMode ? "rgba(94,188,207, 0.15)" : "#485f9c"};
+
+    @media (max-width: 600px) {
+        width: 556px;
+        height: 150px;
+        top: 92%;
+        left: 32%;
+    }
 `
 
 const StarsStyled = styled(Stars)`
@@ -157,6 +190,9 @@ const StarsStyled = styled(Stars)`
     width: 100%;
     height: 100%;
     transition: 750ms opacity ease-in-out;
+    @media (max-width: 600px) {
+        width: 200%;
+    }
 
     ${({ theme }) => {
         return theme.isDayMode
@@ -173,9 +209,7 @@ const StarsStyled = styled(Stars)`
 
 const Clouds = styled(CloudIcon)`
     position: absolute;
-    // animation: ${animateRightToLeft}
-    //     ${({ index }) => index * (Math.random() + 1) * 200000}ms ease-in
-    //     infinite;
+    //animation: ${animateRightToLeft} 500000ms ease-in infinite;
     ${({ theme }) => {
         return theme.isDayMode
             ? css`
@@ -280,8 +314,17 @@ const Sun = styled(SunIcon)`
     @media (max-width: 600px) {
         height: 200px;
         width: 200px;
-        left: -80px;
-        top: -80px;
+        ${({ theme }) => {
+            return theme.isDayMode
+                ? css`
+                      left: -80px;
+                      top: -80px;
+                  `
+                : css`
+                      left: -60%;
+                      top: 48px;
+                  `
+        }}
     }
 `
 
@@ -304,6 +347,22 @@ const Moon = styled(MoonIcon)`
                   top: 5%;
               `
     }};
+
+    @media (max-width: 600px) {
+        height: 100px;
+        width: 100px;
+        ${({ theme }) => {
+            return theme.isDayMode
+                ? css`
+                      right: -40%;
+                      top: 30%;
+                  `
+                : css`
+                      right: 4%;
+                      top: 2%;
+                  `
+        }};
+    }
 `
 
 const IndexWrapper = styled.div`
@@ -348,7 +407,7 @@ const ImageWrapper = styled.div`
                       box-shadow: 70px 70px 70px 5px rgba(94, 188, 207, 0.25);
                   `
                 : css`
-                      box-shadow: -50px 50px 50px 5px rgba(21,28,68,0.25)
+                      box-shadow: -50px 50px 50px 5px rgba(21, 28, 68, 0.25);
                   `};
     }
 `

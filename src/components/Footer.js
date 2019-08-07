@@ -47,7 +47,7 @@ const FooterWrapper = styled.div`
     position: fixed;
     bottom: 20px;
     left: 50%;
-    
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     z-index: 5;

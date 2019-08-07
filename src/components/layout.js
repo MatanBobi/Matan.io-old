@@ -95,12 +95,12 @@ const Layout = ({ location, title, children }) => {
                         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
                     }}
                 >
-                    <button
-                        style={{ zIndex: 2 }}
-                        onClick={() => toggleDayMode()}
-                    >
-                        Toggle
-                    </button>
+                    {/*<button*/}
+                        {/*style={{ zIndex: 2 }}*/}
+                        {/*onClick={() => toggleDayMode()}*/}
+                    {/*>*/}
+                        {/*Toggle*/}
+                    {/*</button>*/}
                     <header>{header}</header>
                     <main>{children}</main>
                 </div>
