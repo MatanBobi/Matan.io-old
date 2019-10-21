@@ -75,15 +75,15 @@ class IndexPage extends React.Component {
                                         <Description>
                                             Frontend developer
                                         </Description>
-                                        <StyledLink to="/blog/">
-                                            <Button
-                                                marginTop="35px"
-                                                radius="40px"
-                                                display="inline-block"
-                                            >
-                                                Visit blog
-                                            </Button>
-                                        </StyledLink>
+                                        {/*<StyledLink to="/blog/">*/}
+                                        {/*    <Button*/}
+                                        {/*        marginTop="35px"*/}
+                                        {/*        radius="40px"*/}
+                                        {/*        display="inline-block"*/}
+                                        {/*    >*/}
+                                        {/*        Visit blog*/}
+                                        {/*    </Button>*/}
+                                        {/*</StyledLink>*/}
                                     </DataContainer>
                                 </IndexWrapper>
                                 <GroundOneStyled />
@@ -210,13 +210,14 @@ const StarsStyled = styled(Stars)`
 const Clouds = styled(CloudIcon)`
     position: absolute;
     //animation: ${animateRightToLeft} 500000ms ease-in infinite;
+    transition: all 500ms ease-in-out;
     ${({ theme }) => {
         return theme.isDayMode
             ? css`
-                  display: block;
+                  opacity: 1;
               `
             : css`
-                  display: none;
+                  opacity: 0;
               `
     }};
     ${({ index }) => {

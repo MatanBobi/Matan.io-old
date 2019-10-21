@@ -15,12 +15,13 @@ import { rhythm, scale } from "../utils/typography"
 const Layout = ({ location, title, children }) => {
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
-    const currentTime = new Date().getHours()
+    let currentTime = new Date().getHours()
     const [isDayMode, toggleDayMode] = useToggle(
         currentTime > 6 && currentTime < 20
     )
 
     useEffect(() => {
+        currentTime = new Date().getHours()
         const timer = setInterval(() => {
             if (
                 (currentTime > 6 && currentTime < 20 && !isDayMode) ||
@@ -96,10 +97,10 @@ const Layout = ({ location, title, children }) => {
                     }}
                 >
                     {/*<button*/}
-                        {/*style={{ zIndex: 2 }}*/}
-                        {/*onClick={() => toggleDayMode()}*/}
+                    {/*    style={{ zIndex: 2 }}*/}
+                    {/*    onClick={() => toggleDayMode()}*/}
                     {/*>*/}
-                        {/*Toggle*/}
+                    {/*    Toggle*/}
                     {/*</button>*/}
                     <header>{header}</header>
                     <main>{children}</main>
