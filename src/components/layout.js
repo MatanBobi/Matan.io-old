@@ -5,7 +5,7 @@ import styled, { css, ThemeProvider } from "styled-components"
 
 // Components
 import Footer from "./Footer.js"
-
+import Toggle from "./Toggle"
 // Hooks
 import useToggle from "../hooks/useToggle"
 
@@ -96,12 +96,10 @@ const Layout = ({ location, title, children }) => {
                         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
                     }}
                 >
-                    {/*<button*/}
-                    {/*    style={{ zIndex: 2 }}*/}
-                    {/*    onClick={() => toggleDayMode()}*/}
-                    {/*>*/}
-                    {/*    Toggle*/}
-                    {/*</button>*/}
+                    <Toggle
+                        toggleNightMode={() => toggleDayMode()}
+                        isDayMode={isDayMode}
+                    />
                     <header>{header}</header>
                     <main>{children}</main>
                 </div>

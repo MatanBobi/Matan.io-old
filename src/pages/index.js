@@ -227,7 +227,7 @@ const Clouds = styled(CloudIcon)`
                     width: 167px;
                     height: 102px;
                     top: 200px;
-                    left: 290px;
+                    left: 190px;
 
                     @media (max-width: 600px) {
                         width: 84px;
@@ -241,7 +241,7 @@ const Clouds = styled(CloudIcon)`
                     width: 313px;
                     height: 191px;
                     top: 170px;
-                    left: 374px;
+                    left: 274px;
                     opacity: 0.3;
 
                     @media (max-width: 600px) {
@@ -256,7 +256,7 @@ const Clouds = styled(CloudIcon)`
                     width: 176px;
                     height: 107px;
                     top: 44px;
-                    left: 591px;
+                    left: 491px;
 
                     @media (max-width: 600px) {
                         width: 88px;

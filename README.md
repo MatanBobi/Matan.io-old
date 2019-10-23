@@ -8,8 +8,6 @@
   Gatsby's personal blog starter
 </h1>
 
-<img alt="screesnhot" src="./screenshot.png">
-
 This starter is a fork of Gatsby Starter Blog, the most popular starter by far – with second place being Gatsby Starter Netlify CMS. So I decided to combine the 2!
 
 ## 🚀 Quick start
