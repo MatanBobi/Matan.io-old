@@ -24,8 +24,8 @@ const Layout = ({ location, title, children }) => {
         currentTime = new Date().getHours()
         const timer = setInterval(() => {
             if (
-                (currentTime > 6 && currentTime < 20 && !isDayMode) ||
-                (currentTime < 7 || (currentTime > 19 && isDayMode))
+                (currentTime > 6 && !isDayMode) ||
+                (currentTime > 19 && isDayMode)
             ) {
                 toggleDayMode()
             }
@@ -97,7 +97,7 @@ const Layout = ({ location, title, children }) => {
                     }}
                 >
                     <Toggle
-                        toggleNightMode={() => toggleDayMode()}
+                        toggleDayMode={() => toggleDayMode()}
                         isDayMode={isDayMode}
                     />
                     <header>{header}</header>
