@@ -386,11 +386,13 @@ const FullName = styled.div`
     font-weight: 900;
     margin-top: 8px;
     z-index: 1;
+    transition: color 500ms ease-in-out;
 `
 
 const Description = styled.div`
     font-size: 20px;
     color: #ffffff;
+    transition: color 500ms ease-in-out;
 `
 
 const ImageWrapper = styled.div`

@@ -21,8 +21,8 @@ const Layout = ({ location, title, children }) => {
     )
 
     useEffect(() => {
-        currentTime = new Date().getHours()
         const timer = setInterval(() => {
+            currentTime = new Date().getHours()
             if (
                 (currentTime > 6 && !isDayMode) ||
                 (currentTime > 19 && isDayMode)
@@ -33,10 +33,10 @@ const Layout = ({ location, title, children }) => {
         return () => {
             clearInterval(timer)
         }
-    }, [isDayMode])
+    }, [isDayMode, toggleDayMode])
 
     const theme = {
-        isDayMode,
+        isDayMode
     }
 
     let header
