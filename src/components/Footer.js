@@ -6,7 +6,8 @@ import styled from "styled-components"
 // Icons
 import MediumIcon from "../icons/med.svg"
 import LinkedinIcon from "../icons/in.svg"
-import TwitterIcon from "../icons/tw.svg"
+import TwitterIcon from "../icons/twitter.svg"
+import DevIcon from "../icons/dev.svg"
 
 const Footer = props => {
     return (
@@ -24,6 +25,13 @@ const Footer = props => {
                 href="https://medium.com/@matanbobi"
             >
                 <Medium />
+            </StyledLink>
+            <StyledLink
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://dev.to/matan_bobi"
+            >
+                <Dev />
             </StyledLink>
             <StyledLink
                 target="_blank"
@@ -72,6 +80,14 @@ const Linkedin = styled(LinkedinIcon)`
 const Twitter = styled(TwitterIcon)`
     width: 32px;
     height: 32px;
+    cursor: pointer;
+    fill: ${({ theme }) => (theme.isDayMode ? "#363636" : "#FFFFFF")};
+    transition: all 300ms ease-in-out;
+`
+
+const Dev = styled(DevIcon)`
+    width: 32px;
+    height: 36px;
     cursor: pointer;
     fill: ${({ theme }) => (theme.isDayMode ? "#363636" : "#FFFFFF")};
     transition: all 300ms ease-in-out;

@@ -307,7 +307,7 @@ const Sun = styled(SunIcon)`
                   top: -100px;
               `
             : css`
-                  left: -20%;
+                  left: -260px;
                   top: 48px;
               `
     }};
@@ -340,7 +340,7 @@ const Moon = styled(MoonIcon)`
     ${({ theme }) => {
         return theme.isDayMode
             ? css`
-                  right: -12%;
+                  right: -150px;
                   top: 34%;
               `
             : css`

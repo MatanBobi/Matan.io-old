@@ -6,8 +6,8 @@ const Label = styled.label`
     top: 10%;
     left: 50%;
     display: inline-block;
-    width: 72px;
-    height: 40px;
+    width: 100px;
+    height: 50px;
     z-index: 2;
     transform: translate(-50%);
 
@@ -30,15 +30,19 @@ const Slider = styled.span`
     transition: 0.4s;
     border-radius: 34px;
     z-index: 1;
+    // box-shadow: inset 7px 0 9px -7px #5ea3b6;
+    &:focus{
+        outline: none;
+    }
 
     :before {
         position: absolute;
         border-radius: 50%;
         content: "";
-        height: 32px;
-        width: 32px;
-        left: 4px;
-        bottom: 4px;
+        height: 40px;
+        width: 40px;
+        left: 5px;
+        bottom: 5px;
         background-color: #4a5d91;
         -webkit-transition: 0.5s;
         transition: 0.5s;
@@ -69,7 +73,7 @@ const Knob = styled.span`
 
 const Checkbox = styled.input`
     :checked + ${Slider} {
-        background-color: #74bbcb;
+        background-color: #5ebccf;
     }
 
     :focus + ${Slider} {
@@ -77,11 +81,11 @@ const Checkbox = styled.input`
     }
 
     :checked + ${Slider}:before {
-        -webkit-transform: translateX(32px);
-        -ms-transform: translateX(32px);
-        transform: translateX(32px);
-        background-color: #fffbd7;
-        box-shadow: 0px 0px 16px 5px rgba(255, 251, 215, 0.75);
+        -webkit-transform: translateX(50px);
+        -ms-transform: translateX(50px);
+        transform: translateX(50px);
+        background-color: #fffcd4;
+        box-shadow: 0px 0px 16px 5px rgba(255, 252, 212, 0.75);
     }
 `
 
