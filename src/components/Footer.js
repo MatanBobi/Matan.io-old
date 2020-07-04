@@ -15,7 +15,7 @@ const Footer = props => {
             <StyledLink
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://twitter.com/matan_bobi"
+                href="https://twitter.com/matanbobi"
             >
                 <Twitter />
             </StyledLink>
