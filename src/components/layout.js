@@ -35,8 +35,15 @@ const Layout = ({ location, title, children }) => {
         }
     }, [isDayMode, toggleDayMode])
 
+    useEffect(() => {
+        currentTime = new Date().getHours()
+        if (currentTime > 6 && currentTime < 20 && !isDayMode) {
+            toggleDayMode()
+        }
+    }, [])
+
     const theme = {
-        isDayMode
+        isDayMode,
     }
 
     let header
