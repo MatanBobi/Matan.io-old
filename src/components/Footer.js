@@ -7,7 +7,7 @@ import styled from "styled-components"
 import MediumIcon from "../icons/med.svg"
 import LinkedinIcon from "../icons/in.svg"
 import TwitterIcon from "../icons/twitter.svg"
-import DevIcon from "../icons/dev.svg"
+import GithubIcon from "../icons/github.svg"
 
 const Footer = props => {
     return (
@@ -29,9 +29,9 @@ const Footer = props => {
             <StyledLink
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://dev.to/matan_bobi"
+                href="https://github.com/matanbobi"
             >
-                <Dev />
+                <Github />
             </StyledLink>
             <StyledLink
                 target="_blank"
@@ -85,7 +85,7 @@ const Twitter = styled(TwitterIcon)`
     transition: all 300ms ease-in-out;
 `
 
-const Dev = styled(DevIcon)`
+const Github = styled(GithubIcon)`
     width: 32px;
     height: 36px;
     cursor: pointer;

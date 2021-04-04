@@ -1,15 +1,19 @@
 import React, { useRef } from "react"
-import styled, { keyframes, css } from "styled-components"
+import styled, { css } from "styled-components"
 
 const Label = styled.label`
+    ${({ size }) =>
+        size === "small"
+            ? "transform: scale(0.5) translate(-50%);"
+            : "transform: translate(-50%);"}
     position: absolute;
-    top: 10%;
-    left: 50%;
+    top: ${({ size }) => (size === "small" ? 0 : "10%")};
+    left: ${({ size }) => (size === "small" ? "calc(100vw - 55px)" : "50%")};
     display: inline-block;
     width: 100px;
     height: 50px;
-    z-index: 2;
-    transform: translate(-50%);
+    z-index: 3;
+    transition: all 250ms ease-in-out;
 
     input {
         opacity: 0;
@@ -31,7 +35,7 @@ const Slider = styled.span`
     border-radius: 34px;
     z-index: 1;
     // box-shadow: inset 7px 0 9px -7px #5ea3b6;
-    &:focus{
+    &:focus {
         outline: none;
     }
 
@@ -95,10 +99,10 @@ const keyframesForAnimation = [
     { transform: "translateY(0)" },
 ]
 
-const Toggle = ({ toggleDayMode, isDayMode }) => {
+const Toggle = ({ toggleDayMode, isDayMode, size }) => {
     const stringRef = useRef()
     return (
-        <Label>
+        <Label size={size}>
             <Checkbox
                 type="checkbox"
                 onClick={() => {
