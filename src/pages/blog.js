@@ -1,8 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import styled from "styled-components"
-
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
@@ -12,8 +10,8 @@ import { PostCard } from "../components/PostCard"
 const PostsWrapper = styled.div`
     margin: 20px 0 40px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px , 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px , 1fr));
+    gap: 50px;
     font-size: 14px;
 `
 
@@ -53,9 +51,6 @@ class Blog extends React.Component {
                         )
                     })}
                 </PostsWrapper>
-                <Link to="/">
-                    <Button marginTop="85px">Go Home</Button>
-                </Link>
             </Layout>
         )
     }

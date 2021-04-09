@@ -211,9 +211,10 @@ const StyledMain = styled.main`
     position: relative;
     z-index: 2;
     max-width: 1200px;
-    max-height: calc(100vh - 195px);
+    max-height: calc(100vh - 150px);
     padding: 0 20px;
     overflow: auto;
+    margin: 0 auto;
 `
 
 const GroundOneStyled = styled(GroundOne)`

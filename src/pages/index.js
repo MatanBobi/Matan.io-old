@@ -1,11 +1,10 @@
 import React, { Fragment } from "react"
 import Image from "gatsby-image"
 import { graphql, Link, StaticQuery } from "gatsby"
-import styled, { keyframes, css } from "styled-components"
+import styled, { css } from "styled-components"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Button from "../components/button"
 class IndexPage extends React.Component {
     render() {
         const siteTitle = "Hello! I'm Matan."
@@ -78,6 +77,7 @@ class IndexPage extends React.Component {
 }
 
 const IndexWrapper = styled.div`
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
