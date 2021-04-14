@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import Img from 'gatsby-image'
 
 const PostWrapper = styled.div`
     color: var(--colors-primary);
@@ -29,7 +30,7 @@ const DataWrapper = styled.div`
 export const PostCard = ({ image, title, description, date }) => {
     return (
         <PostWrapper>
-            {image && <StyledImage src={image} />}
+            {image && <Img fluid={image.childImageSharp.fluid} /> }
             <DataWrapper>
                 <time>{date}</time>
                 <Title>{title}</Title>

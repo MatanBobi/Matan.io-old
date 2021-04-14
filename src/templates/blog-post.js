@@ -1,6 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Img from 'gatsby-image'
 import styled from "styled-components"
+import Markdown from 'react-markdown'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -23,6 +25,8 @@ class BlogPostTemplate extends React.Component {
                     description={post.frontmatter.description || post.excerpt}
                 />
                 <BlogPostWrapper>
+                    <Img fluid={post.frontmatter.banner.childImageSharp.fluid} />
+                    <Markdown>{post.frontmatter.bannerCredit}</Markdown>
                     <h1>{post.frontmatter.title}</h1>
                     <p
                         style={{
@@ -61,7 +65,10 @@ class BlogPostTemplate extends React.Component {
                         </li>
                         <li>
                             {next && (
-                                <Link to={`/blog${next.fields.slug}`} rel="next">
+                                <Link
+                                    to={`/blog${next.fields.slug}`}
+                                    rel="next"
+                                >
                                     {next.frontmatter.title} →
                                 </Link>
                             )}
@@ -91,7 +98,10 @@ export const pageQuery = graphql`
                 title
                 date(formatString: "MMMM DD, YYYY")
                 description
-                coverImage
+                banner {
+                    ...bannerImage720
+                }
+                bannerCredit
             }
         }
     }

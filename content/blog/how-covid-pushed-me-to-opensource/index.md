@@ -1,7 +1,12 @@
 ---
+slug: 'how-covid-pushed-me-to-open-source'
 title: How COVID pushed me to Open Source
-date: "2021-04-04T23:02:03.284Z"
-coverImage: 'https://images.unsplash.com/photo-1600639427353-c00df51f0941?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80'
+date: '2021-04-14'
+author: 'Matan Borenkraout'
+categories:
+  - 'open source'
+banner: './images/banner.jpg'
+bannerCredit: 'Photo by [Joshua Gresham](https://unsplash.com/photos/2poldZWTz1U)'
 description: This is a short personal retrospective of the last year.
 ---
 

@@ -3,14 +3,12 @@ import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
-import Button from "../components/button"
 import { PostCard } from "../components/PostCard"
 
 const PostsWrapper = styled.div`
     margin: 20px 0 40px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px , 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 50px;
     font-size: 14px;
 `
@@ -27,7 +25,7 @@ class Blog extends React.Component {
                 <PostsWrapper>
                     {posts.map(({ node }) => {
                         const {
-                            coverImage,
+                            banner,
                             title,
                             description,
                             date,
@@ -39,7 +37,7 @@ class Blog extends React.Component {
                                     to={`/blog${node.fields.slug}`}
                                 >
                                     <PostCard
-                                        image={coverImage}
+                                        image={banner}
                                         title={title}
                                         description={
                                             description || node.excerpt
@@ -76,7 +74,9 @@ export const pageQuery = graphql`
                         date(formatString: "MMMM DD, YYYY")
                         title
                         description
-                        coverImage
+                        banner {
+                            ...bannerImage260
+                        }
                     }
                 }
             }

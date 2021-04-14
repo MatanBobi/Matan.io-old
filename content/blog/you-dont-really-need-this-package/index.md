@@ -1,8 +1,13 @@
 ---
+slug: 'you-dont-really-need-this-package'
 title: You don’t really need this package!
-date: "2018-10-09T06:53:30.406Z"
-coverImage: 'https://images.unsplash.com/photo-1513672494107-cd9d848a383e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+date: "2018-10-09"
+author: 'Matan Borenkraout'
+categories:
+  - 'work process'
 description: A short explanation of why you should choose your packages wisely
+banner: './images/banner.jpg'
+bannerCredit: 'Photo by [CHUTTERSNAP](https://unsplash.com/photos/fyaTq-fIlro)'
 ---
 
 Yesterday I had a nightmare about a problem I bumped into while coding my new project.  
@@ -24,7 +29,6 @@ Here’s a list of some of the most depended upon packages (taken from [npm.js](
 3. axios: 11.9kb
 4. validator: 46.3kb
 5. query-string: 3kb
-
 
 ## So what are my alternatives?
 Don’t use them. Yeah I know it’s not that easy. But if you can, just write the code yourself. Here are some examples of functionality you can get from browsers or “must use” packages that can replace these packages.
