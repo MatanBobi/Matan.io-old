@@ -1,14 +1,14 @@
 import React, { useRef } from "react"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
 const Label = styled.label`
     ${({ size }) =>
         size === "small"
             ? "transform: scale(0.5) translate(-50%);"
             : "transform: translate(-50%);"}
-    position: absolute;
+    position: fixed;
     top: ${({ size }) => (size === "small" ? 0 : "10%")};
-    left: ${({ size }) => (size === "small" ? "calc(100vw - 55px)" : "50%")};
+    left: ${({ size }) => (size === "small" ? "calc(100vw - 58px)" : "50%")};
     display: inline-block;
     width: 100px;
     height: 50px;
@@ -23,7 +23,7 @@ const Label = styled.label`
 `
 
 const Slider = styled.span`
-    position: absolute;
+    position: fixed;
     cursor: pointer;
     top: 0;
     left: 0;
@@ -40,7 +40,7 @@ const Slider = styled.span`
     }
 
     :before {
-        position: absolute;
+        position: fixed;
         border-radius: 50%;
         content: "";
         height: 40px;
@@ -53,7 +53,7 @@ const Slider = styled.span`
     }
 `
 const String = styled.div`
-    position: absolute;
+    position: fixed;
     bottom: 15px;
     left: 22px;
 `
@@ -85,8 +85,6 @@ const Checkbox = styled.input`
     }
 
     :checked + ${Slider}:before {
-        -webkit-transform: translateX(50px);
-        -ms-transform: translateX(50px);
         transform: translateX(50px);
         background-color: #fffcd4;
         box-shadow: 0px 0px 16px 5px rgba(255, 252, 212, 0.75);

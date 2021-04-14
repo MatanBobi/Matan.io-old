@@ -153,19 +153,21 @@ const GlobalStyles = createGlobalStyle`
     body[data-theme='light'] {
         --colors-primary: #24292e;
         --colors-seconday: #6a737d;
+        --colors-background: rgba(255,255,255,0.7)
     }
     body[data-theme='dark'] {
         --colors-primary: #adbac7;
         --colors-seconday: #768390;
+        --colors-background: rgba(255,255,255,0.7)
     }
 `
 
 const Wrapper = styled.div`
     position: relative;
-    max-height: 100vh;
+    /* max-height: 100vh; */
     color: #878787;
     transition: all 500ms ease-in-out;
-    overflow: hidden;
+    /* overflow: hidden; */
 
     &::before {
         content: "";
@@ -211,16 +213,14 @@ const StyledMain = styled.main`
     position: relative;
     z-index: 2;
     max-width: 1200px;
-    max-height: calc(100vh - 150px);
     padding: 0 20px;
-    overflow: auto;
     margin: 0 auto;
 `
 
 const GroundOneStyled = styled(GroundOne)`
     width: 2469px;
     height: 786px;
-    position: absolute;
+    position: fixed;
     top: 82%;
     left: -25%;
     z-index: 1;
@@ -237,7 +237,7 @@ const GroundOneStyled = styled(GroundOne)`
 const GroundFourStyled = styled(GroundFour)`
     width: 1958px;
     height: 537px;
-    position: absolute;
+    position: fixed;
     top: 91%;
     left: -22%;
     z-index: 4;
@@ -255,7 +255,7 @@ const GroundFourStyled = styled(GroundFour)`
 const GroundTwoStyled = styled(GroundTwo)`
     width: 2204px;
     height: 592px;
-    position: absolute;
+    position: fixed;
     top: 87%;
     left: -7%;
     z-index: 2;
@@ -274,7 +274,7 @@ const GroundTwoStyled = styled(GroundTwo)`
 const GroundThreeStyled = styled(GroundThree)`
     width: 2225px;
     height: 601px;
-    position: absolute;
+    position: fixed;
     top: 87%;
     left: 37%;
     z-index: 3;
@@ -291,7 +291,7 @@ const GroundThreeStyled = styled(GroundThree)`
 `
 
 const StarsStyled = styled(Stars)`
-    position: absolute;
+    position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
@@ -325,7 +325,7 @@ const animateRightToLeft = keyframes`
 `
 
 const Clouds = styled(CloudIcon)`
-    position: absolute;
+    position: fixed;
     //animation: ${animateRightToLeft} 500000ms ease-in infinite;
     transition: all 500ms ease-in-out;
     ${({ theme }) => {
@@ -374,7 +374,7 @@ const Clouds = styled(CloudIcon)`
                     height: 107px;
                     top: 44px;
                     left: 491px;
-
+                    opacity: 0.4;
                     @media (max-width: 600px) {
                         width: 88px;
                         height: 54px;
@@ -402,6 +402,7 @@ const Clouds = styled(CloudIcon)`
                     height: 124px;
                     top: 218px;
                     left: 80%;
+                    opacity: 0.5;
                     @media (max-width: 600px) {
                         display: none;
                     }
@@ -411,7 +412,7 @@ const Clouds = styled(CloudIcon)`
 `
 
 const Sun = styled(SunIcon)`
-    position: absolute;
+    position: fixed;
     z-index: 1;
     height: 250px;
     width: 250px;
@@ -447,7 +448,7 @@ const Sun = styled(SunIcon)`
 `
 
 const Moon = styled(MoonIcon)`
-    position: absolute;
+    position: fixed;
     z-index: 1;
     height: 140px;
     width: 140px;
