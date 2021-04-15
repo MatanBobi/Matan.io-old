@@ -135,7 +135,7 @@ const Layout = ({ location, title, children }) => {
                     <Clouds index={5} />
                     <Sun />
                     <Moon />
-                    <header>{header}</header>
+                    {/* <header>{header}</header> */}
                     <StyledMain>{children}</StyledMain>
                     <GroundOneStyled />
                     <GroundTwoStyled />
@@ -164,10 +164,8 @@ const GlobalStyles = createGlobalStyle`
 
 const Wrapper = styled.div`
     position: relative;
-    /* max-height: 100vh; */
     color: #878787;
     transition: all 500ms ease-in-out;
-    /* overflow: hidden; */
 
     &::before {
         content: "";
@@ -211,7 +209,7 @@ const Wrapper = styled.div`
 
 const StyledMain = styled.main`
     position: relative;
-    z-index: 2;
+    z-index: 5;
     max-width: 1200px;
     padding: 0 20px;
     margin: 0 auto;

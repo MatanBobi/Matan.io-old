@@ -8,8 +8,18 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 
-const BlogPostWrapper = styled.div`
+const BlogPostWrapper = styled.article`
     color: var(--colors-primary);
+    max-width: 800px;
+    margin: 0 auto;
+
+    img {
+        width: 100%;
+    }
+`
+
+const Title = styled.h1`
+    text-align: center;
 `
 
 class BlogPostTemplate extends React.Component {
@@ -25,9 +35,9 @@ class BlogPostTemplate extends React.Component {
                     description={post.frontmatter.description || post.excerpt}
                 />
                 <BlogPostWrapper>
+                    <Title>{post.frontmatter.title}</Title>
                     <Img fluid={post.frontmatter.banner.childImageSharp.fluid} />
                     <Markdown>{post.frontmatter.bannerCredit}</Markdown>
-                    <h1>{post.frontmatter.title}</h1>
                     <p
                         style={{
                             ...scale(-1 / 5),

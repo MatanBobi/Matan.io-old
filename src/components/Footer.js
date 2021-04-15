@@ -52,7 +52,7 @@ const StyledLink = styled.a`
 `
 
 const FooterWrapper = styled.div`
-    position: fixed;
+    position: absolute;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);

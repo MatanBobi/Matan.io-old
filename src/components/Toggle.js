@@ -12,7 +12,7 @@ const Label = styled.label`
     display: inline-block;
     width: 100px;
     height: 50px;
-    z-index: 3;
+    z-index: 6;
     transition: all 250ms ease-in-out;
 
     input {

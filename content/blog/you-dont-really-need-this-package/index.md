@@ -18,7 +18,7 @@ The main one can be seen in day to day coding.
 These days, almost every problem has a solution. The npm registry is filled with packages that can solve all of your easiest or worst problems, but what if choosing the quickest way is actually the dirtiest way?  
 Only last July, the npm registry got compromised by malicious packages after an attacker compromised the npm account of a maintainer [Postmortem for malicious packages](https://eslint.org/blog/2018/07/postmortem-for-malicious-package-publishes).
 
->>> “The malicious packages downloaded and executed code from pastebin.com"
+> “The malicious packages downloaded and executed code from pastebin.com"
 
 This time it was ESLint but it could be any package. So, we should choose our packages wisely.
 
@@ -37,7 +37,7 @@ Don’t use them. Yeah I know it’s not that easy. But if you can, just write t
 Lodash functionality can be very useful. But we got used to it and sometimes we use it when there’s actually no need to.  
 ES6 contains a lot of functions that really make Lodash redundant.
 
-```
+```js
 let arrExample = [1, 2, 3, 4, 5, 6, 7];
 let objExample = {a: 1, b: 2, c: 3};
 // Lodash
@@ -54,7 +54,7 @@ Object.keys(objExample).map(currKey => console.log(currKey));
 [Moment.js](https://momentjs.com/) is a very powerful tool, but while it doesn’t include tree-shaking, you’re stuck with the whole library.  
 Sometimes, all you need to do is to parse a date or format, and for that, you don’t really need a new package.
 
-```
+```js
 // Moment
 moment().format("dddd, MMMM D, YYYY");
 // Will print: Monday, October 8, 2018
@@ -72,7 +72,7 @@ There are many packages that came to solve our problem with sending HTTP request
 They did their job but I believe it’s time to start implementing the new standard. Of course, this has some downsides as the API is still half-baked and while implementing it you will need to compromise on some stuff.  
 Here’s an example of a request:
 
-```
+```js
 // Axios
 axios.get('http://example.com/movies.json')
   .then(function (response) {
@@ -93,7 +93,7 @@ While doing this, you will see some changes, the main one is that we need to use
 Another problem with fetch is that a response with status code representing an error (500, 404 etc.) isn’t treated as an error and will be handled in the success section.  
 So to handle server errors in a generic way I would probably build an error handling function:
 
-```
+```js
 function errorHandler(response) {
     if (!response.ok) {
         throw ServerError(response.statusText);
@@ -116,7 +116,7 @@ To sum it all up, maybe getting on board before was too early, now is the time t
 ### Validator Vs Regexp
 This one is actually a simple one. Validator is a great package but it includes lots of regular expressions. Sometimes you don’t need them all. To see if a field is numeric only, You don’t need the whole package.
 
-```
+```js
 // Validator
 isNumeric(strExample);
 // Will return false
@@ -129,7 +129,7 @@ numericRegex.test(strExample);
 ### query-string Vs URLSearchParams
 [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) supported on almost all browsers (except for IE), provides a consistent interface to the bits and pieces of the URL and allows trivial manipulation of the query string. ([Easy URL manipulation with URLSearchParams](https://developers.google.com/web/updates/2016/01/urlsearchparams?hl=en)).
 
-```
+```js
 // query-string
 const parsed = queryString.parse(location.search);
 console.log(parsed);
