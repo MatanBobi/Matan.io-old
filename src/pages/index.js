@@ -92,6 +92,7 @@ const IndexWrapper = styled.div`
 
     @media (max-width: 600px) {
         flex-direction: column;
+        padding: 4px;
     }
 `
 

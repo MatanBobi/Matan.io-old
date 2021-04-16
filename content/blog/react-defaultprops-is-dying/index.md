@@ -86,10 +86,42 @@ The main advantage `defaultProps` has is it gives us a unified way of setting de
 The main problem with `defaultProps`, lies in its implementation.  
 Let’s have a look at `React.createElement` implementation at the latest stable version (16.8.6).
 
+```
+export function createElement(type, config, children) {
+  let propName;
 
-____________________________________________________________________
-Simplified version of createElement taken from React repo in GitHub
-____________________________________________________________________
+  // Reserved names are extracted
+  const props = {};
+
+  if (config != null) {
+    // Handling ref and keys    
+
+    // Assign props to prop object
+  }
+  
+  // Transfer children to newly allocated props object
+
+  // Resolve default props
+  if (type && type.defaultProps) {
+    const defaultProps = type.defaultProps;
+    for (propName in defaultProps) {
+      if (props[propName] === undefined) {
+        props[propName] = defaultProps[propName];
+      }
+    }
+  }
+
+  return ReactElement(
+    type,
+    key,
+    ref,
+    self,
+    source,
+    ReactCurrentOwner.current,
+    props,
+  );
+}
+```
 
 We can see that some stuff happen when calling to `createElement` with the props object, but the main issue is the `defaultProps` check. If we have `defaultProps`, we iterate over them and check if we already have a value in the props object, in case we don’t have a value we assign it the default. This happens **every time** we call `createElement`.  
 Let’s have a look at a small timing example I took with the Greet component we just built (The test was made in a development build of React).  

@@ -64,50 +64,6 @@ const Layout = ({ location, title, children }) => {
         isDayMode,
     }
 
-    let header
-
-    if (location.pathname === rootPath || location.pathname === blogPath) {
-        header = (
-            <h1
-                style={{
-                    ...scale(1.5),
-                    marginBottom: rhythm(1.5),
-                    marginTop: 0,
-                }}
-            >
-                {/*<Link*/}
-                {/*style={{*/}
-                {/*boxShadow: `none`,*/}
-                {/*textDecoration: `none`,*/}
-                {/*color: `inherit`,*/}
-                {/*}}*/}
-                {/*to={location.pathname === blogPath ? `/blog/` : `/`}*/}
-                {/*>*/}
-                {/*{title}*/}
-                {/*</Link>*/}
-            </h1>
-        )
-    } else {
-        header = (
-            <h3
-                style={{
-                    fontFamily: `Montserrat, sans-serif`,
-                    marginTop: 0,
-                }}
-            >
-                <Link
-                    style={{
-                        boxShadow: `none`,
-                        textDecoration: `none`,
-                        color: `inherit`,
-                    }}
-                    to={`/blog/`}
-                >
-                    {title}
-                </Link>
-            </h3>
-        )
-    }
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyles />
@@ -135,7 +91,6 @@ const Layout = ({ location, title, children }) => {
                     <Clouds index={5} />
                     <Sun />
                     <Moon />
-                    {/* <header>{header}</header> */}
                     <StyledMain>{children}</StyledMain>
                     <GroundOneStyled />
                     <GroundTwoStyled />

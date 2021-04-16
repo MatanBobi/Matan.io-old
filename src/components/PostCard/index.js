@@ -25,6 +25,7 @@ const Title = styled.div`
 
 const DataWrapper = styled.div`
     padding: 20px;
+    min-height: 180px;
 `
 
 export const PostCard = ({ image, title, description, date }) => {

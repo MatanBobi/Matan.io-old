@@ -8,7 +8,7 @@ categories:
   - 'recruting'
 banner: './images/banner.jpg'
 bannerCredit: 'Looking for our superman/wonder woman by [Esteban Lopez](https://unsplash.com/photos/2poldZWTz1U)'
-description: I’ve been interviewing for a while now and right after my first session of interviews with some candidates, I came to an epiphany, I’m doing this all wrong.
+description: After an interview session with a candidate, I came to an epiphany, I’m doing this all wrong.
 ---
 
 I’ve been interviewing for a while now and right after my first session of interviews with some candidates, I came to an epiphany, I’m doing this all wrong.

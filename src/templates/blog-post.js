@@ -1,8 +1,8 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Img from 'gatsby-image'
+import Img from "gatsby-image"
 import styled from "styled-components"
-import Markdown from 'react-markdown'
+import Markdown from "react-markdown"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -22,6 +22,11 @@ const Title = styled.h1`
     text-align: center;
 `
 
+const BannerCredit = styled.div`
+    text-align: right;
+    font-size: 12px;
+`
+
 class BlogPostTemplate extends React.Component {
     render() {
         const post = this.props.data.markdownRemark
@@ -36,8 +41,12 @@ class BlogPostTemplate extends React.Component {
                 />
                 <BlogPostWrapper>
                     <Title>{post.frontmatter.title}</Title>
-                    <Img fluid={post.frontmatter.banner.childImageSharp.fluid} />
-                    <Markdown>{post.frontmatter.bannerCredit}</Markdown>
+                    <Img
+                        fluid={post.frontmatter.banner.childImageSharp.fluid}
+                    />
+                    <BannerCredit>
+                        <Markdown>{post.frontmatter.bannerCredit}</Markdown>
+                    </BannerCredit>
                     <p
                         style={{
                             ...scale(-1 / 5),

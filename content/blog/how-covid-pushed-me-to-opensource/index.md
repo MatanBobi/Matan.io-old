@@ -6,7 +6,7 @@ author: 'Matan Borenkraout'
 categories:
   - 'open source'
 banner: './images/banner.jpg'
-bannerCredit: 'Photo by [Joshua Gresham](https://unsplash.com/photos/2poldZWTz1U)'
+bannerCredit: 'Photo by [Raz Lifshitz](https://twitter.com/razlifshitz)'
 description: This is a short personal retrospective of the last year.
 ---
 
