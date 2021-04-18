@@ -7,7 +7,10 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+
+const StyledLink = styled(Link)`
+    color: var(--colors-secondary);
+`
 
 const BlogPostWrapper = styled.article`
     color: var(--colors-primary);
@@ -21,6 +24,7 @@ const BlogPostWrapper = styled.article`
 
 const Title = styled.h1`
     text-align: center;
+    margin: 0 0 30px;
 `
 
 const BannerCredit = styled.div`
@@ -28,11 +32,20 @@ const BannerCredit = styled.div`
     font-size: 12px;
 `
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+const SmallInfo = styled.small`
+    margin: 0 2px;
+    font-weight: 300;
+    &:first-of-type{
+        &::after{
+            content: '|';
+            margin: 0 0 0 4px;
+        }
+    }
+`
+
+const BlogPostTemplate = ({ data, location }) => {
     const post = data.mdx
     const siteTitle = data.site.siteMetadata.title
-    const { previous, next } = pageContext
-    console.log(data)
     return (
         <Layout location={location} title={siteTitle}>
             <SEO
@@ -40,55 +53,21 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 description={post.frontmatter.description || post.excerpt}
             />
             <BlogPostWrapper>
+                <SmallInfo>{post.frontmatter.date}</SmallInfo>
+                <SmallInfo>{post.fields.readingTime.text}</SmallInfo>
                 <Title>{post.frontmatter.title}</Title>
-                <small>{post.fields.readingTime.text}</small>
                 <Img fluid={post.frontmatter.banner.childImageSharp.fluid} />
                 <BannerCredit>
                     <Markdown>{post.frontmatter.bannerCredit}</Markdown>
                 </BannerCredit>
-                <p
-                    style={{
-                        ...scale(-1 / 5),
-                        display: `block`,
-                        marginBottom: rhythm(1),
-                        marginTop: rhythm(-1),
-                    }}
-                >
-                    {post.frontmatter.date}
-                </p>
                 <MDXRenderer>{post.body}</MDXRenderer>
-                <hr
-                    style={{
-                        marginBottom: rhythm(1),
-                    }}
-                />
-                <ul
-                    style={{
-                        display: `flex`,
-                        flexWrap: `wrap`,
-                        justifyContent: `space-between`,
-                        listStyle: `none`,
-                        padding: 0,
-                    }}
+                <StyledLink
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={post.fields.editLink}
                 >
-                    <li>
-                        {previous && (
-                            <Link
-                                to={`/blog/${previous.slug}`}
-                                rel="prev"
-                            >
-                                ← {previous.frontmatter.title}
-                            </Link>
-                        )}
-                    </li>
-                    <li>
-                        {next && (
-                            <Link to={`/blog/${next.slug}`} rel="next">
-                                {next.frontmatter.title} →
-                            </Link>
-                        )}
-                    </li>
-                </ul>
+                    Edit post on GitHub
+                </StyledLink>
             </BlogPostWrapper>
         </Layout>
     )
@@ -109,6 +88,7 @@ export const pageQuery = graphql`
             excerpt(pruneLength: 160)
             body
             fields {
+                editLink
                 readingTime {
                     text
                 }

@@ -1,22 +1,23 @@
 // 3rd Party
 import React, { useEffect } from "react"
-import { Link } from "gatsby"
 import styled, {
     css,
     ThemeProvider,
     keyframes,
     createGlobalStyle,
 } from "styled-components"
+import { MDXProvider } from "@mdx-js/react"
 
 // Components
 import Footer from "./Footer.js"
 import Toggle from "./Toggle"
+import { components } from "./Markdown"
 
 // Hooks
 import useToggle from "../hooks/useToggle"
 
 // Utils
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 import GroundOne from "../icons/ground-1.svg"
 import GroundTwo from "../icons/ground-2.svg"
 import GroundThree from "../icons/ground-3.svg"
@@ -26,38 +27,39 @@ import SunIcon from "../icons/sun.svg"
 import CloudIcon from "../icons/cloud.svg"
 import MoonIcon from "../icons/moon.svg"
 
+const setModeByTime = (setLightMode, setDarkMode, isDayMode) => {
+    const currentTime = new Date().getHours()
+    if (currentTime > 6 && currentTime < 20 && !isDayMode) {
+        setLightMode()
+        return
+    } else if ((currentTime <= 6 || currentTime >= 20) && isDayMode) {
+        setDarkMode()
+        return
+    }
+}
+
 const Layout = ({ location, title, children }) => {
-    const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
     let currentTime = new Date().getHours()
-    const [isDayMode, toggleDayMode] = useToggle(
+    const [isDayMode, toggleDayMode, setLightMode, setDarkMode] = useToggle(
         currentTime > 6 && currentTime < 20
     )
 
     useEffect(() => {
         const timer = setInterval(() => {
-            currentTime = new Date().getHours()
-            if (
-                (currentTime > 6 && !isDayMode) ||
-                (currentTime > 19 && isDayMode)
-            ) {
-                toggleDayMode()
-            }
+            setModeByTime(setLightMode, setDarkMode, isDayMode)
         }, 60000 * 60)
         return () => {
             clearInterval(timer)
         }
-    }, [isDayMode, toggleDayMode])
+    }, [isDayMode, setLightMode, setDarkMode])
 
     useEffect(() => {
         document.body.dataset.theme = isDayMode ? "light" : "dark"
     }, [isDayMode])
 
     useEffect(() => {
-        currentTime = new Date().getHours()
-        if (currentTime > 6 && currentTime < 20 && !isDayMode) {
-            toggleDayMode()
-        }
+        setModeByTime(setLightMode, setDarkMode, isDayMode)
     }, [])
 
     const theme = {
@@ -68,37 +70,39 @@ const Layout = ({ location, title, children }) => {
         <ThemeProvider theme={theme}>
             <GlobalStyles />
             <Wrapper>
-                <div
-                    style={{
-                        minWidth: "100vw",
-                        minHeight: "100vh",
-                        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-                    }}
-                >
-                    <Toggle
-                        size={
-                            location.pathname.includes(blogPath)
-                                ? "small"
-                                : "big"
-                        }
-                        toggleDayMode={() => toggleDayMode()}
-                        isDayMode={isDayMode}
-                    />
-                    <Clouds index={1} />
-                    <Clouds index={2} />
-                    <Clouds index={3} />
-                    <Clouds index={4} />
-                    <Clouds index={5} />
-                    <Sun />
-                    <Moon />
-                    <StyledMain>{children}</StyledMain>
-                    <GroundOneStyled />
-                    <GroundTwoStyled />
-                    <GroundThreeStyled />
-                    <GroundFourStyled />
-                    <StarsStyled />
-                </div>
-                <Footer />
+                <MDXProvider components={components}>
+                    <div
+                        style={{
+                            minWidth: "100vw",
+                            minHeight: "100vh",
+                            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+                        }}
+                    >
+                        <Toggle
+                            size={
+                                location.pathname.includes(blogPath)
+                                    ? "small"
+                                    : "big"
+                            }
+                            toggleDayMode={() => toggleDayMode()}
+                            isDayMode={isDayMode}
+                        />
+                        <Clouds index={1} />
+                        <Clouds index={2} />
+                        <Clouds index={3} />
+                        <Clouds index={4} />
+                        <Clouds index={5} />
+                        <Sun />
+                        <Moon />
+                        <StyledMain>{children}</StyledMain>
+                        <GroundOneStyled />
+                        <GroundTwoStyled />
+                        <GroundThreeStyled />
+                        <GroundFourStyled />
+                        <StarsStyled />
+                    </div>
+                    <Footer />
+                </MDXProvider>
             </Wrapper>
         </ThemeProvider>
     )
@@ -107,12 +111,12 @@ const Layout = ({ location, title, children }) => {
 const GlobalStyles = createGlobalStyle`
     body[data-theme='light'] {
         --colors-primary: #24292e;
-        --colors-seconday: #6a737d;
+        --colors-secondary: #6a737d;
         --colors-background: rgba(255,255,255,0.7)
     }
     body[data-theme='dark'] {
-        --colors-primary: #adbac7;
-        --colors-seconday: #768390;
+        --colors-primary: #FFFFFF;
+        --colors-secondary: #98e0ef;
         --colors-background: rgba(255,255,255,0.7)
     }
 `

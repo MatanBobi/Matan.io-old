@@ -8,6 +8,7 @@ categories:
 banner: './images/banner.jpg'
 bannerCredit: 'Photo by [Raz Lifshitz](https://twitter.com/razlifshitz)'
 description: This is a short personal retrospective of the last year.
+isDraft: true
 ---
 
 ### Intro
