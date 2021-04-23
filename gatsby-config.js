@@ -19,6 +19,15 @@ module.exports = {
         `gatsby-plugin-sitemap`,
         `gatsby-remark-reading-time`,
         {
+            resolve: `gatsby-plugin-nprogress`,
+            options: {
+                // Setting a color is optional.
+                color: "white",
+                // Disable the loading spinner.
+                showSpinner: false,
+            },
+        },
+        {
             resolve: "gatsby-plugin-react-svg",
             options: {
                 path: `${__dirname}/src/icons`,
@@ -52,7 +61,7 @@ module.exports = {
                     },
                     `gatsby-remark-vscode`,
                     `gatsby-remark-copy-linked-files`,
-                    `gatsby-remark-smartypants`
+                    `gatsby-remark-smartypants`,
                 ],
             },
         },

@@ -30,14 +30,17 @@ const Title = styled.h1`
 const BannerCredit = styled.div`
     text-align: right;
     font-size: 12px;
+    a {
+        color: var(--colors-secondary);
+    }
 `
 
 const SmallInfo = styled.small`
     margin: 0 2px;
     font-weight: 300;
-    &:first-of-type{
-        &::after{
-            content: '|';
+    &:first-of-type {
+        &::after {
+            content: "|";
             margin: 0 0 0 4px;
         }
     }
