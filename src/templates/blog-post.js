@@ -10,13 +10,14 @@ import SEO from "../components/seo"
 
 const StyledLink = styled(Link)`
     color: var(--colors-secondary);
+    margin-top: 8px;
 `
 
 const BlogPostWrapper = styled.article`
     color: var(--colors-primary);
     max-width: 800px;
     margin: 0 auto;
-
+    padding-bottom: 60px;
     img {
         width: 100%;
     }
@@ -46,6 +47,8 @@ const SmallInfo = styled.small`
     }
 `
 
+const BlogFooter = styled.div``
+
 const BlogPostTemplate = ({ data, location }) => {
     const post = data.mdx
     const siteTitle = data.site.siteMetadata.title
@@ -56,21 +59,23 @@ const BlogPostTemplate = ({ data, location }) => {
                 description={post.frontmatter.description || post.excerpt}
             />
             <BlogPostWrapper>
-                <SmallInfo>{post.frontmatter.date}</SmallInfo>
-                <SmallInfo>{post.fields.readingTime.text}</SmallInfo>
                 <Title>{post.frontmatter.title}</Title>
                 <Img fluid={post.frontmatter.banner.childImageSharp.fluid} />
                 <BannerCredit>
                     <Markdown>{post.frontmatter.bannerCredit}</Markdown>
                 </BannerCredit>
+                <SmallInfo>{post.frontmatter.date}</SmallInfo>
+                <SmallInfo>{post.fields.readingTime.text}</SmallInfo>
                 <MDXRenderer>{post.body}</MDXRenderer>
-                <StyledLink
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={post.fields.editLink}
-                >
-                    Edit post on GitHub
-                </StyledLink>
+                <BlogFooter>
+                    <StyledLink
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={post.fields.editLink}
+                    >
+                        Edit post on GitHub
+                    </StyledLink>
+                </BlogFooter>
             </BlogPostWrapper>
         </Layout>
     )

@@ -13,7 +13,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import darkFavicon from "../icons/favicon-dark.png"
 import lightFavicon from "../icons/favicon-light.png"
 
-function SEO({ description, lang, meta, keywords, title, theme }) {
+function SEO({ description, lang, meta, keywords, title, theme, image }) {
     const { site } = useStaticQuery(
         graphql`
             query {
@@ -61,6 +61,14 @@ function SEO({ description, lang, meta, keywords, title, theme }) {
                 {
                     property: `og:type`,
                     content: `website`,
+                },
+                {
+                    property: `og:image`,
+                    content: image ? image:(theme.isDayMode ? lightFavicon : darkFavicon)
+                },
+                {
+                    property: `twitter:image`,
+                    content: image ? image:(theme.isDayMode ? lightFavicon : darkFavicon)
                 },
                 {
                     name: `twitter:card`,
