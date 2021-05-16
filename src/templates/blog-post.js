@@ -4,8 +4,6 @@ import Img from "gatsby-image"
 import styled from "styled-components"
 import Markdown from "react-markdown"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const StyledLink = styled(Link)`
@@ -51,9 +49,8 @@ const BlogFooter = styled.div``
 
 const BlogPostTemplate = ({ data, location }) => {
     const post = data.mdx
-    const siteTitle = data.site.siteMetadata.title
     return (
-        <Layout location={location} title={siteTitle}>
+        <React.Fragment>
             <SEO
                 title={post.frontmatter.title}
                 description={post.frontmatter.description || post.excerpt}
@@ -77,7 +74,7 @@ const BlogPostTemplate = ({ data, location }) => {
                     </StyledLink>
                 </BlogFooter>
             </BlogPostWrapper>
-        </Layout>
+        </React.Fragment>
     )
 }
 

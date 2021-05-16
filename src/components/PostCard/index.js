@@ -3,7 +3,8 @@ import styled from "styled-components"
 import Img from 'gatsby-image'
 
 const PostWrapper = styled.div`
-    color: var(--colors-primary);
+    color: #24292e;
+    background: #FFFFFF;
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 5px 40px rgba(0,0,0,0.2);

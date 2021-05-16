@@ -12,6 +12,7 @@ import { MDXProvider } from "@mdx-js/react"
 import Footer from "./Footer.js"
 import Toggle from "./Toggle"
 import { components } from "./Markdown"
+import { Header } from "./Header"
 
 // Hooks
 import useToggle from "../hooks/useToggle"
@@ -39,7 +40,7 @@ const setModeByTime = (setLightMode, setDarkMode, isDayMode) => {
 }
 
 const Layout = ({ location, title, children }) => {
-    const blogPath = `${__PATH_PREFIX__}/blog/`
+    const blogPath = `${__PATH_PREFIX__}/blog`
     let currentTime = new Date().getHours()
     const [isDayMode, toggleDayMode, setLightMode, setDarkMode] = useToggle(
         currentTime > 6 && currentTime < 20
@@ -71,6 +72,7 @@ const Layout = ({ location, title, children }) => {
             <GlobalStyles />
             <Wrapper>
                 <MDXProvider components={components}>
+                    <Header isVisible={location.pathname.includes(blogPath)} />
                     <div
                         style={{
                             minWidth: "100vw",
@@ -110,7 +112,7 @@ const Layout = ({ location, title, children }) => {
 
 const GlobalStyles = createGlobalStyle`
     body[data-theme='light'] {
-        --colors-primary: #24292e;
+        --colors-primary: #000000;
         --colors-secondary: #6a737d;
         --colors-background: rgba(255,255,255,0.7)
     }

@@ -2,76 +2,63 @@ import React, { Fragment } from "react"
 import Image from "gatsby-image"
 import { graphql, Link, StaticQuery } from "gatsby"
 import styled, { css } from "styled-components"
-
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 class IndexPage extends React.Component {
     render() {
-        const siteTitle = "Hello! I'm Matan."
-
         return (
-            <Layout location={this.props.location} title={siteTitle}>
-                <StaticQuery
-                    query={indexQuery}
-                    render={data => {
-                        const { author, social } = data.site.siteMetadata
+            <StaticQuery
+                query={indexQuery}
+                render={data => {
+                    const { author, social } = data.site.siteMetadata
 
-                        return (
-                            <Fragment>
-                                <SEO
-                                    title="Home"
-                                    keywords={[
-                                        `blog`,
-                                        `frontend developer`,
-                                        `javascript`,
-                                        `react`,
-                                    ]}
-                                />
-                                <IndexWrapper>
-                                    <ImageWrapper>
-                                        <Image
-                                            fixed={
-                                                data.avatar.childImageSharp
-                                                    .fixed
-                                            }
-                                            alt={author}
-                                            style={{
-                                                maxWidth: 200,
-                                                maxHeight: 200,
-                                                transform: `rotate(16deg)`,
-                                                borderRadius: `30px`,
-                                                margin: `0 100px`,
-                                            }}
-                                            imgStyle={{
-                                                top: -18,
-                                                left: -16,
-                                                minWidth: 240,
-                                                minHeight: 240,
-                                                transform: `rotate(-16deg)`,
-                                            }}
-                                        />
-                                    </ImageWrapper>
-                                    <DataContainer>
-                                        <FullName>Matan Borenkraout</FullName>
-                                        <Description>
-                                            Frontend developer
-                                        </Description>
-                                        {/*<StyledLink to="/blog/">*/}
-                                        {/*    <Button*/}
-                                        {/*        marginTop="35px"*/}
-                                        {/*        radius="40px"*/}
-                                        {/*        display="inline-block"*/}
-                                        {/*    >*/}
-                                        {/*        Visit blog*/}
-                                        {/*    </Button>*/}
-                                        {/*</StyledLink>*/}
-                                    </DataContainer>
-                                </IndexWrapper>
-                            </Fragment>
-                        )
-                    }}
-                />
-            </Layout>
+                    return (
+                        <Fragment>
+                            <SEO
+                                title="Home"
+                                keywords={[
+                                    `blog`,
+                                    `frontend developer`,
+                                    `javascript`,
+                                    `react`,
+                                ]}
+                            />
+                            <IndexWrapper>
+                                <ImageWrapper>
+                                    <Image
+                                        fixed={
+                                            data.avatar.childImageSharp.fixed
+                                        }
+                                        alt={author}
+                                        style={{
+                                            maxWidth: 200,
+                                            maxHeight: 200,
+                                            transform: `rotate(16deg)`,
+                                            borderRadius: `30px`,
+                                            margin: `0 100px`,
+                                        }}
+                                        imgStyle={{
+                                            top: -18,
+                                            left: -16,
+                                            minWidth: 240,
+                                            minHeight: 240,
+                                            transform: `rotate(-16deg)`,
+                                        }}
+                                    />
+                                </ImageWrapper>
+                                <DataContainer>
+                                    <FullName>Matan Borenkraout</FullName>
+                                    <Description>
+                                        Frontend developer
+                                    </Description>
+                                    <StyledLink to="/blog">
+                                        <Button>Check out my blog</Button>
+                                    </StyledLink>
+                                </DataContainer>
+                            </IndexWrapper>
+                        </Fragment>
+                    )
+                }}
+            />
         )
     }
 }
@@ -97,8 +84,9 @@ const IndexWrapper = styled.div`
 `
 
 const FullName = styled.div`
-    color: #363636;
+    color: var(--colors-primary);
     font-size: 32px;
+    height: 56px;
     font-weight: 900;
     margin-top: 8px;
     z-index: 1;
@@ -145,10 +133,6 @@ const DataContainer = styled.div`
         return theme.isDayMode
             ? css``
             : css`
-                  & > ${FullName} {
-                      color: #ffffff;
-                  }
-
                   & > ${Description} {
                       color: #c0c0c0;
                   }
@@ -160,6 +144,18 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     width: max-content;
     box-shadow: none;
+`
+
+const Button = styled.button`
+    cursor: pointer;
+    margin-top: 35px;
+    background-color: ${({ theme }) =>
+        theme.isDayMode ? "#5ebccf" : "#0f142e"};
+    border-radius: 34px;
+    padding: 10px 15px;
+    border: none;
+    color: ${({ theme }) => (theme.isDayMode ? "#FFFFFF" : "#c0c0c0")};
+    transition: all 500ms ease-in-out;
 `
 
 const indexQuery = graphql`

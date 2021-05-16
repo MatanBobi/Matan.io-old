@@ -13,7 +13,7 @@ const Label = styled.label`
     width: 100px;
     height: 50px;
     z-index: 6;
-    transition: all 250ms ease-in-out;
+    transition: all 500ms ease-in-out;
 
     input {
         opacity: 0;

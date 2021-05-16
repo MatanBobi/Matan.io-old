@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import styled from "styled-components"
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { PostCard } from "../components/PostCard"
 
@@ -16,11 +15,10 @@ const PostsWrapper = styled.div`
 class Blog extends React.Component {
     render() {
         const { data } = this.props
-        const siteTitle = data.site.siteMetadata.title
         const posts = data.allMdx.edges
 
         return (
-            <Layout location={this.props.location} title={siteTitle}>
+            <React.Fragment>
                 <SEO title="All posts" />
                 <PostsWrapper>
                     {posts.map(({ node }) => {
@@ -49,7 +47,7 @@ class Blog extends React.Component {
                         )
                     })}
                 </PostsWrapper>
-            </Layout>
+            </React.Fragment>
         )
     }
 }

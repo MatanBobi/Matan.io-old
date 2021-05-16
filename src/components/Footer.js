@@ -65,7 +65,7 @@ const Medium = styled(MediumIcon)`
     width: 32px;
     height: 32px;
     cursor: pointer;
-    fill: ${({ theme }) => (theme.isDayMode ? "#363636" : "#FFFFFF")};
+    fill: var(--colors-primary);
     transition: all 300ms ease-in-out;
 `
 
@@ -73,7 +73,7 @@ const Linkedin = styled(LinkedinIcon)`
     width: 32px;
     height: 32px;
     cursor: pointer;
-    fill: ${({ theme }) => (theme.isDayMode ? "#363636" : "#FFFFFF")};
+    fill: var(--colors-primary);
     transition: all 300ms ease-in-out;
 `
 
@@ -81,7 +81,7 @@ const Twitter = styled(TwitterIcon)`
     width: 32px;
     height: 32px;
     cursor: pointer;
-    fill: ${({ theme }) => (theme.isDayMode ? "#363636" : "#FFFFFF")};
+    fill: var(--colors-primary);
     transition: all 300ms ease-in-out;
 `
 
@@ -89,7 +89,7 @@ const Github = styled(GithubIcon)`
     width: 32px;
     height: 36px;
     cursor: pointer;
-    fill: ${({ theme }) => (theme.isDayMode ? "#363636" : "#FFFFFF")};
+    fill: var(--colors-primary);
     transition: all 300ms ease-in-out;
 `
 
