@@ -1,8 +1,8 @@
 // 3rd Party
-import React, { useEffect } from "react"
+import React, { useContext } from "react"
 import styled, {
     css,
-    ThemeProvider,
+    ThemeContext,
     keyframes,
     createGlobalStyle,
 } from "styled-components"
@@ -13,9 +13,6 @@ import Footer from "./Footer.js"
 import Toggle from "./Toggle"
 import { components } from "./Markdown"
 import { Header } from "./Header"
-
-// Hooks
-import useToggle from "../hooks/useToggle"
 
 // Utils
 import { rhythm } from "../utils/typography"
@@ -28,47 +25,11 @@ import SunIcon from "../icons/sun.svg"
 import CloudIcon from "../icons/cloud.svg"
 import MoonIcon from "../icons/moon.svg"
 
-const setModeByTime = (setLightMode, setDarkMode, isDayMode) => {
-    const currentTime = new Date().getHours()
-    if (currentTime > 6 && currentTime < 20 && !isDayMode) {
-        setLightMode()
-        return
-    } else if ((currentTime <= 6 || currentTime >= 20) && isDayMode) {
-        setDarkMode()
-        return
-    }
-}
-
 const Layout = ({ location, title, children }) => {
     const blogPath = `${__PATH_PREFIX__}/blog`
-    let currentTime = new Date().getHours()
-    const [isDayMode, toggleDayMode, setLightMode, setDarkMode] = useToggle(
-        currentTime > 6 && currentTime < 20
-    )
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setModeByTime(setLightMode, setDarkMode, isDayMode)
-        }, 60000 * 60)
-        return () => {
-            clearInterval(timer)
-        }
-    }, [isDayMode, setLightMode, setDarkMode])
-
-    useEffect(() => {
-        document.body.dataset.theme = isDayMode ? "light" : "dark"
-    }, [isDayMode])
-
-    useEffect(() => {
-        setModeByTime(setLightMode, setDarkMode, isDayMode)
-    }, [])
-
-    const theme = {
-        isDayMode,
-    }
-
+    const theme = useContext(ThemeContext)
     return (
-        <ThemeProvider theme={theme}>
+        <React.Fragment>
             <GlobalStyles />
             <Wrapper>
                 <MDXProvider components={components}>
@@ -86,8 +47,8 @@ const Layout = ({ location, title, children }) => {
                                     ? "small"
                                     : "big"
                             }
-                            toggleDayMode={() => toggleDayMode()}
-                            isDayMode={isDayMode}
+                            toggleDayMode={() => theme.toggleDayMode()}
+                            isDayMode={theme.isDayMode}
                         />
                         <Clouds index={1} />
                         <Clouds index={2} />
@@ -106,7 +67,7 @@ const Layout = ({ location, title, children }) => {
                     <Footer />
                 </MDXProvider>
             </Wrapper>
-        </ThemeProvider>
+        </React.Fragment>
     )
 }
 

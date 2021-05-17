@@ -9,7 +9,7 @@ class IndexPage extends React.Component {
             <StaticQuery
                 query={indexQuery}
                 render={data => {
-                    const { author, social } = data.site.siteMetadata
+                    const { author } = data.site.siteMetadata
 
                     return (
                         <Fragment>

@@ -7,7 +7,7 @@ import styled, { ThemeContext } from "styled-components"
 import lightIcon from "../../icons/favicon-light.png"
 import darkIcon from "../../icons/favicon-dark.png"
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.header`
     padding: 10px 15px;
     position: fixed;
     top: ${({ isVisible }) => (isVisible ? 0 : "-50px")};

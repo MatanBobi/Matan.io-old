@@ -1,6 +1,5 @@
 // 3rd Party
 import React from "react"
-import PropTypes from "prop-types"
 import styled from "styled-components"
 
 // Icons
@@ -9,7 +8,7 @@ import LinkedinIcon from "../icons/in.svg"
 import TwitterIcon from "../icons/twitter.svg"
 import GithubIcon from "../icons/github.svg"
 
-const Footer = props => {
+const Footer = () => {
     return (
         <FooterWrapper>
             <StyledLink
@@ -43,8 +42,6 @@ const Footer = props => {
         </FooterWrapper>
     )
 }
-
-Footer.propTypes = {}
 
 const StyledLink = styled.a`
     box-shadow: none;

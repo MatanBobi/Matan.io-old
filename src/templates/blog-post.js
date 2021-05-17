@@ -62,7 +62,7 @@ const BlogPostTemplate = ({ data, location }) => {
                     <Markdown>{post.frontmatter.bannerCredit}</Markdown>
                 </BannerCredit>
                 <SmallInfo>{post.frontmatter.date}</SmallInfo>
-                <SmallInfo>{post.fields.readingTime.text}</SmallInfo>
+                {/* <SmallInfo>{post.fields.readingTime.text}</SmallInfo> */}
                 <MDXRenderer>{post.body}</MDXRenderer>
                 <BlogFooter>
                     <StyledLink
@@ -94,9 +94,6 @@ export const pageQuery = graphql`
             body
             fields {
                 editLink
-                readingTime {
-                    text
-                }
             }
             frontmatter {
                 title

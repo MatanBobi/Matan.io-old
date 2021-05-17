@@ -17,7 +17,6 @@ module.exports = {
         `gatsby-plugin-offline`,
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-sitemap`,
-        `gatsby-remark-reading-time`,
         {
             resolve: `gatsby-plugin-nprogress`,
             options: {
@@ -74,8 +73,7 @@ module.exports = {
                 background_color: `#ffffff`,
                 theme_color: `#98e0ef`,
                 display: `minimal-ui`,
-                // edit below
-                // icon: `content/assets/gatsby-icon.png`,
+                icon: 'src/icons/favicon-light.png'
             },
         },
         {

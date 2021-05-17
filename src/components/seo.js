@@ -1,19 +1,13 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React from "react"
+import React, { useContext } from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
-import { withTheme } from "styled-components"
+import { ThemeContext } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import darkFavicon from "../icons/favicon-dark.png"
 import lightFavicon from "../icons/favicon-light.png"
 
-function SEO({ description, lang, meta, keywords, title, theme, image }) {
+function SEO({ description, lang, meta, keywords, title, image }) {
+    const theme = useContext(ThemeContext)
     const { site } = useStaticQuery(
         graphql`
             query {
@@ -64,11 +58,19 @@ function SEO({ description, lang, meta, keywords, title, theme, image }) {
                 },
                 {
                     property: `og:image`,
-                    content: image ? image:(theme.isDayMode ? lightFavicon : darkFavicon)
+                    content: image
+                        ? image
+                        : theme.isDayMode
+                        ? lightFavicon
+                        : darkFavicon,
                 },
                 {
                     property: `twitter:image`,
-                    content: image ? image:(theme.isDayMode ? lightFavicon : darkFavicon)
+                    content: image
+                        ? image
+                        : theme.isDayMode
+                        ? lightFavicon
+                        : darkFavicon,
                 },
                 {
                     name: `twitter:card`,
@@ -115,4 +117,4 @@ SEO.propTypes = {
     title: PropTypes.string.isRequired,
 }
 
-export default withTheme(SEO)
+export default SEO
