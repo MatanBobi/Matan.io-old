@@ -75,12 +75,12 @@ const GlobalStyles = createGlobalStyle`
     body[data-theme='light'] {
         --colors-primary: #000000;
         --colors-secondary: #6a737d;
-        --colors-background: rgba(255,255,255,0.7)
+        --colors-background: rgba(255,255,255,1)
     }
     body[data-theme='dark'] {
         --colors-primary: #FFFFFF;
         --colors-secondary: #98e0ef;
-        --colors-background: rgba(255,255,255,0.7)
+        --colors-background: #121212;
     }
 `
 

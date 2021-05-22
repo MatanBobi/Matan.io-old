@@ -2,7 +2,7 @@ import React, { Fragment } from "react"
 import Image from "gatsby-image"
 import { graphql, Link, StaticQuery } from "gatsby"
 import styled, { css } from "styled-components"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 class IndexPage extends React.Component {
     render() {
         return (
@@ -13,7 +13,7 @@ class IndexPage extends React.Component {
 
                     return (
                         <Fragment>
-                            <SEO
+                            <Seo
                                 title="Home"
                                 keywords={[
                                     `blog`,
@@ -86,7 +86,6 @@ const IndexWrapper = styled.div`
 const FullName = styled.div`
     color: var(--colors-primary);
     font-size: 32px;
-    height: 56px;
     font-weight: 900;
     margin-top: 8px;
     z-index: 1;

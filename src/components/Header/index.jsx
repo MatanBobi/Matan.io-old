@@ -13,42 +13,26 @@ const HeaderWrapper = styled.header`
     top: ${({ isVisible }) => (isVisible ? 0 : "-50px")};
     height: 50px;
     width: 100%;
-    background: #ffffff;
-
     transition: all 500ms ease-in-out;
     z-index: 2;
     display: flex;
-`
-
-const FullNamePositioner = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100%;
-    z-index: 2;
-    position: fixed;
-    padding: 150px;
-    top: ${({ isVisible }) => (isVisible ? "90px" : "50%")};
-    left: ${({ isVisible }) => (isVisible ? "0" : "50%")};
-    transform: translate(-50%, -50%);
-    transition: all 500ms ease-in-out;
 `
 
 const FullName = styled.div`
     font-family: "Montserrat", sans-serif;
     color: var(--colors-primary);
-    font-size: 32px;
-    font-weight: 900;
+    font-size: 16px;
+    margin: 0 8px;
+    font-weight: 700;
     z-index: 1;
     transition: color 500ms ease-in-out;
-    margin-left: 400px;
-    margin-bottom: 110px;
 `
 
 const SiteIcon = styled.img`
     width: 30px;
     height: 30px;
+    margin-bottom: 0;
 `
 
 export const Header = ({ isVisible }) => {
@@ -56,9 +40,7 @@ export const Header = ({ isVisible }) => {
     return (
         <HeaderWrapper isVisible={isVisible}>
             <SiteIcon src={theme.isDayMode ? lightIcon : darkIcon} />
-            <FullNamePositioner isVisible={isVisible}>
-                <FullName>Matan Borenkraout</FullName>
-            </FullNamePositioner>
+            <FullName>Matan Borenkraout</FullName>
         </HeaderWrapper>
     )
 }

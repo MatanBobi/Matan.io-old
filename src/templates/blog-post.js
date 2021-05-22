@@ -1,10 +1,10 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import Markdown from "react-markdown"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 const StyledLink = styled(Link)`
     color: var(--colors-secondary);
@@ -14,8 +14,12 @@ const StyledLink = styled(Link)`
 const BlogPostWrapper = styled.article`
     color: var(--colors-primary);
     max-width: 800px;
-    margin: 0 auto;
-    padding-bottom: 60px;
+    margin: 40px auto;
+    padding: 40px;
+    background: var(--colors-background);
+    border-radius: 10px;
+    position: relative;
+
     img {
         width: 100%;
     }
@@ -45,34 +49,57 @@ const SmallInfo = styled.small`
     }
 `
 
+const Overlay = styled.div`
+    ${({ theme }) =>
+        !theme.isDayMode &&
+        css`
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(47, 72, 140, 0.15);
+        `}
+`
+const ContentWrapper = styled.div`
+    position: relative;
+    z-index: 1;
+`
+
 const BlogFooter = styled.div``
 
 const BlogPostTemplate = ({ data, location }) => {
     const post = data.mdx
     return (
         <React.Fragment>
-            <SEO
+            <Seo
                 title={post.frontmatter.title}
                 description={post.frontmatter.description || post.excerpt}
             />
             <BlogPostWrapper>
-                <Title>{post.frontmatter.title}</Title>
-                <Img fluid={post.frontmatter.banner.childImageSharp.fluid} />
-                <BannerCredit>
-                    <Markdown>{post.frontmatter.bannerCredit}</Markdown>
-                </BannerCredit>
-                <SmallInfo>{post.frontmatter.date}</SmallInfo>
-                {/* <SmallInfo>{post.fields.readingTime.text}</SmallInfo> */}
-                <MDXRenderer>{post.body}</MDXRenderer>
-                <BlogFooter>
-                    <StyledLink
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={post.fields.editLink}
-                    >
-                        Edit post on GitHub
-                    </StyledLink>
-                </BlogFooter>
+                <Overlay />
+                <ContentWrapper>
+                    <Title>{post.frontmatter.title}</Title>
+                    <Img
+                        fluid={post.frontmatter.banner.childImageSharp.fluid}
+                    />
+                    <BannerCredit>
+                        <Markdown>{post.frontmatter.bannerCredit}</Markdown>
+                    </BannerCredit>
+                    <SmallInfo>{post.frontmatter.date}</SmallInfo>
+                    {/* <SmallInfo>{post.fields.readingTime.text}</SmallInfo> */}
+                    <MDXRenderer>{post.body}</MDXRenderer>
+                    <BlogFooter>
+                        <StyledLink
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={post.fields.editLink}
+                        >
+                            Edit post on GitHub
+                        </StyledLink>
+                    </BlogFooter>
+                </ContentWrapper>
             </BlogPostWrapper>
         </React.Fragment>
     )

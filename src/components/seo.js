@@ -6,7 +6,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import darkFavicon from "../icons/favicon-dark.png"
 import lightFavicon from "../icons/favicon-light.png"
 
-function SEO({ description, lang, meta, keywords, title, image }) {
+function Seo({ description, lang, meta, keywords, title, image }) {
     const theme = useContext(ThemeContext)
     const { site } = useStaticQuery(
         graphql`
@@ -102,14 +102,14 @@ function SEO({ description, lang, meta, keywords, title, image }) {
     )
 }
 
-SEO.defaultProps = {
+Seo.defaultProps = {
     lang: `en`,
     meta: [],
     keywords: [],
     description: ``,
 }
 
-SEO.propTypes = {
+Seo.propTypes = {
     description: PropTypes.string,
     lang: PropTypes.string,
     meta: PropTypes.arrayOf(PropTypes.object),
@@ -117,4 +117,4 @@ SEO.propTypes = {
     title: PropTypes.string.isRequired,
 }
 
-export default SEO
+export default Seo

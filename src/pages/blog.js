@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import styled from "styled-components"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { PostCard } from "../components/PostCard"
 
 const PostsWrapper = styled.div`
@@ -19,7 +19,7 @@ class Blog extends React.Component {
 
         return (
             <React.Fragment>
-                <SEO title="All posts" />
+                <Seo title="All posts" />
                 <PostsWrapper>
                     {posts.map(({ node }) => {
                         const {

@@ -6,7 +6,7 @@ const Label = styled.label`
         size === "small"
             ? "transform: scale(0.5) translate(-50%);"
             : "transform: translate(-50%);"}
-    position: fixed;
+    position: absolute;
     top: ${({ size }) => (size === "small" ? 0 : "10%")};
     left: ${({ size }) => (size === "small" ? "calc(100vw - 58px)" : "50%")};
     display: inline-block;

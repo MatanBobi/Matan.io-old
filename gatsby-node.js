@@ -23,7 +23,7 @@ exports.createPages = ({ graphql, actions }) => {
                 }
             }
         `
-    ).then(result => {
+    ).then((result) => {
         if (result.errors) {
             throw result.errors
         }
@@ -72,7 +72,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
 }
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ actions, stage, plugins }) => {
+    if (stage === "build-javascript" || stage === "develop") {
+        actions.setWebpackConfig({
+            plugins: [plugins.provide({ process: "process/browser" })],
+        })
+    }
     actions.setWebpackConfig({
         resolve: {
             alias: {
