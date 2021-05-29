@@ -55,8 +55,12 @@ const Layout = ({ location, title, children }) => {
                         <Clouds index={3} />
                         <Clouds index={4} />
                         <Clouds index={5} />
-                        <Sun />
-                        <Moon />
+                        {!location.pathname.includes(blogPath) && (
+                            <React.Fragment>
+                                <Sun />
+                                <Moon />
+                            </React.Fragment>
+                        )}
                         <StyledMain>{children}</StyledMain>
                         <GroundOneStyled />
                         <GroundTwoStyled />

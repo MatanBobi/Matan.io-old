@@ -16,18 +16,10 @@ const BlogPostWrapper = styled.article`
     max-width: 800px;
     margin: 40px auto;
     padding: 40px;
-    background: var(--colors-background);
-    border-radius: 10px;
-    position: relative;
-
-    img {
-        width: 100%;
-    }
 `
 
 const Title = styled.h1`
-    text-align: center;
-    margin: 0 0 30px;
+    margin-top: 0;
 `
 
 const BannerCredit = styled.div`
@@ -39,37 +31,19 @@ const BannerCredit = styled.div`
 `
 
 const SmallInfo = styled.small`
-    margin: 0 2px;
+    display: block;
+    font-size: 90%;
     font-weight: 300;
-    &:first-of-type {
-        &::after {
-            content: "|";
-            margin: 0 0 0 4px;
-        }
-    }
+    line-height: 1.75rem;
+    margin-top: -1.75rem;
 `
-
-const Overlay = styled.div`
-    ${({ theme }) =>
-        !theme.isDayMode &&
-        css`
-            border-radius: 10px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba(47, 72, 140, 0.15);
-        `}
-`
-const ContentWrapper = styled.div`
-    position: relative;
-    z-index: 1;
+const BlogHeader = styled.div`
+    margin-bottom: 1.75rem;
 `
 
 const BlogFooter = styled.div``
 
-const BlogPostTemplate = ({ data, location }) => {
+const BlogPostTemplate = ({ data }) => {
     const post = data.mdx
     return (
         <React.Fragment>
@@ -78,28 +52,27 @@ const BlogPostTemplate = ({ data, location }) => {
                 description={post.frontmatter.description || post.excerpt}
             />
             <BlogPostWrapper>
-                <Overlay />
-                <ContentWrapper>
+                <BlogHeader>
                     <Title>{post.frontmatter.title}</Title>
-                    <Img
-                        fluid={post.frontmatter.banner.childImageSharp.fluid}
-                    />
-                    <BannerCredit>
-                        <Markdown>{post.frontmatter.bannerCredit}</Markdown>
-                    </BannerCredit>
-                    <SmallInfo>{post.frontmatter.date}</SmallInfo>
-                    {/* <SmallInfo>{post.fields.readingTime.text}</SmallInfo> */}
-                    <MDXRenderer>{post.body}</MDXRenderer>
-                    <BlogFooter>
-                        <StyledLink
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href={post.fields.editLink}
-                        >
-                            Edit post on GitHub
-                        </StyledLink>
-                    </BlogFooter>
-                </ContentWrapper>
+                    <SmallInfo>
+                        {post.frontmatter.date} · {post.fields.readingTime.text}
+                    </SmallInfo>
+                </BlogHeader>
+                <Img fluid={post.frontmatter.banner.childImageSharp.fluid} />
+                <BannerCredit>
+                    <Markdown>{post.frontmatter.bannerCredit}</Markdown>
+                </BannerCredit>
+                {/* <SmallInfo>{post.fields.readingTime.text}</SmallInfo> */}
+                <MDXRenderer>{post.body}</MDXRenderer>
+                <BlogFooter>
+                    <StyledLink
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={post.fields.editLink}
+                    >
+                        Edit post on GitHub
+                    </StyledLink>
+                </BlogFooter>
             </BlogPostWrapper>
         </React.Fragment>
     )
@@ -121,6 +94,9 @@ export const pageQuery = graphql`
             body
             fields {
                 editLink
+                readingTime {
+                    text
+                }
             }
             frontmatter {
                 title

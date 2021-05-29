@@ -17,6 +17,7 @@ module.exports = {
         `gatsby-plugin-offline`,
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-sitemap`,
+        `gatsby-remark-reading-time`,
         {
             resolve: `gatsby-plugin-nprogress`,
             options: {

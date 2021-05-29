@@ -2,6 +2,7 @@
 import React, { useContext } from "react"
 import PropTypes from "prop-types"
 import styled, { ThemeContext } from "styled-components"
+import { Link } from "gatsby"
 
 // Icons
 import lightIcon from "../../icons/favicon-light.png"
@@ -9,7 +10,7 @@ import darkIcon from "../../icons/favicon-dark.png"
 
 const HeaderWrapper = styled.header`
     padding: 10px 15px;
-    position: fixed;
+    position: absolute;
     top: ${({ isVisible }) => (isVisible ? 0 : "-50px")};
     height: 50px;
     width: 100%;
@@ -19,7 +20,7 @@ const HeaderWrapper = styled.header`
     align-items: center;
 `
 
-const FullName = styled.div`
+const FullNameLink = styled(Link)`
     font-family: "Montserrat", sans-serif;
     color: var(--colors-primary);
     font-size: 16px;
@@ -27,6 +28,7 @@ const FullName = styled.div`
     font-weight: 700;
     z-index: 1;
     transition: color 500ms ease-in-out;
+    box-shadow: none;
 `
 
 const SiteIcon = styled.img`
@@ -40,7 +42,7 @@ export const Header = ({ isVisible }) => {
     return (
         <HeaderWrapper isVisible={isVisible}>
             <SiteIcon src={theme.isDayMode ? lightIcon : darkIcon} />
-            <FullName>Matan Borenkraout</FullName>
+            <FullNameLink to="/">Matan Borenkraout</FullNameLink>
         </HeaderWrapper>
     )
 }
