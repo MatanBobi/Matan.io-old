@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import Markdown from "react-markdown"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Seo from "../components/seo"
@@ -15,7 +15,6 @@ const BlogPostWrapper = styled.article`
     color: var(--colors-primary);
     max-width: 800px;
     margin: 40px auto;
-    padding: 40px;
 `
 
 const Title = styled.h1`
