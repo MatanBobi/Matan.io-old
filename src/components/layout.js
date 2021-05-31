@@ -1,8 +1,7 @@
 // 3rd Party
-import React, { useContext } from "react"
+import React from "react"
 import styled, {
     css,
-    ThemeContext,
     keyframes,
     createGlobalStyle,
 } from "styled-components"
@@ -10,7 +9,6 @@ import { MDXProvider } from "@mdx-js/react"
 
 // Components
 import Footer from "./Footer.js"
-import Toggle from "./Toggle"
 import { components } from "./Markdown"
 import { Header } from "./Header"
 
@@ -27,7 +25,6 @@ import MoonIcon from "../icons/moon.svg"
 
 const Layout = ({ location, title, children }) => {
     const blogPath = `${__PATH_PREFIX__}/blog`
-    const theme = useContext(ThemeContext)
     return (
         <React.Fragment>
             <GlobalStyles />
@@ -41,15 +38,6 @@ const Layout = ({ location, title, children }) => {
                             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
                         }}
                     >
-                        <Toggle
-                            size={
-                                location.pathname.includes(blogPath)
-                                    ? "small"
-                                    : "big"
-                            }
-                            toggleDayMode={() => theme.toggleDayMode()}
-                            isDayMode={theme.isDayMode}
-                        />
                         <Clouds index={1} />
                         <Clouds index={2} />
                         <Clouds index={3} />

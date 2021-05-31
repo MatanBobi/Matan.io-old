@@ -4,6 +4,9 @@ import PropTypes from "prop-types"
 import styled, { ThemeContext } from "styled-components"
 import { Link } from "gatsby"
 
+// Components
+import Toggle from "../Toggle"
+
 // Icons
 import lightIcon from "../../icons/favicon-light.png"
 import darkIcon from "../../icons/favicon-dark.png"
@@ -43,6 +46,11 @@ export const Header = ({ isVisible }) => {
         <HeaderWrapper isVisible={isVisible}>
             <SiteIcon src={theme.isDayMode ? lightIcon : darkIcon} />
             <FullNameLink to="/">Matan Borenkraout</FullNameLink>
+            <Toggle
+                size="small"
+                toggleDayMode={() => theme.toggleDayMode()}
+                isDayMode={theme.isDayMode}
+            />
         </HeaderWrapper>
     )
 }

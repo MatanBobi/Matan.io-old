@@ -1,66 +1,67 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useContext } from "react"
 import Image from "gatsby-image"
 import { graphql, Link, StaticQuery } from "gatsby"
-import styled, { css } from "styled-components"
+import styled, { css, ThemeContext } from "styled-components"
 import Seo from "../components/seo"
-class IndexPage extends React.Component {
-    render() {
-        return (
-            <StaticQuery
-                query={indexQuery}
-                render={data => {
-                    const { author } = data.site.siteMetadata
+import Toggle from "../components/Toggle"
+const IndexPage = () => {
+    const theme = useContext(ThemeContext)
+    return (
+        <StaticQuery
+            query={indexQuery}
+            render={(data) => {
+                const { author } = data.site.siteMetadata
 
-                    return (
-                        <Fragment>
-                            <Seo
-                                title="Home"
-                                keywords={[
-                                    `blog`,
-                                    `frontend developer`,
-                                    `javascript`,
-                                    `react`,
-                                ]}
+                return (
+                    <Fragment>
+                        <Seo
+                            title="Home"
+                            keywords={[
+                                `blog`,
+                                `frontend developer`,
+                                `javascript`,
+                                `react`,
+                            ]}
+                        />
+                        <IndexWrapper>
+                            <Toggle
+                                size="big"
+                                toggleDayMode={() => theme.toggleDayMode()}
+                                isDayMode={theme.isDayMode}
                             />
-                            <IndexWrapper>
-                                <ImageWrapper>
-                                    <Image
-                                        fixed={
-                                            data.avatar.childImageSharp.fixed
-                                        }
-                                        alt={author}
-                                        style={{
-                                            maxWidth: 200,
-                                            maxHeight: 200,
-                                            transform: `rotate(16deg)`,
-                                            borderRadius: `30px`,
-                                            margin: `0 100px`,
-                                        }}
-                                        imgStyle={{
-                                            top: -18,
-                                            left: -16,
-                                            minWidth: 240,
-                                            minHeight: 240,
-                                            transform: `rotate(-16deg)`,
-                                        }}
-                                    />
-                                </ImageWrapper>
-                                <DataContainer>
-                                    <FullName>Matan Borenkraout</FullName>
-                                    <Description>
-                                        Frontend developer
-                                    </Description>
-                                    <StyledLink to="/blog">
-                                        <Button>Check out my blog</Button>
-                                    </StyledLink>
-                                </DataContainer>
-                            </IndexWrapper>
-                        </Fragment>
-                    )
-                }}
-            />
-        )
-    }
+                            <ImageWrapper>
+                                <Image
+                                    fixed={data.avatar.childImageSharp.fixed}
+                                    alt={author}
+                                    style={{
+                                        maxWidth: 200,
+                                        maxHeight: 200,
+                                        transform: `rotate(16deg)`,
+                                        borderRadius: `30px`,
+                                        margin: `0 100px`,
+                                    }}
+                                    imgStyle={{
+                                        top: -18,
+                                        left: -16,
+                                        minWidth: 240,
+                                        minHeight: 240,
+                                        transform: `rotate(-16deg)`,
+                                    }}
+                                />
+                            </ImageWrapper>
+                            <DataContainer>
+                                <FullName>Matan Borenkraout</FullName>
+                                <Description>Frontend developer</Description>
+                                <StyledLink to="/blog">
+                                    <Button>Check out my blog</Button>
+                                </StyledLink>
+                            </DataContainer>
+                        </IndexWrapper>
+                    </Fragment>
+                )
+            }}
+        />
+    )
 }
 
 const IndexWrapper = styled.div`
