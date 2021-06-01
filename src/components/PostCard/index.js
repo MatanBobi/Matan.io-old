@@ -3,8 +3,8 @@ import styled from "styled-components"
 import Img from 'gatsby-image'
 
 const PostWrapper = styled.div`
-    color: #24292e;
-    background: #FFFFFF;
+    color: ${({theme}) => theme.isDayMode ? '#24292e':'#FFFFFF'};
+    background: ${({theme}) => theme.isDayMode ? '#FFFFFF':'rgba(75, 178, 249, 0.08)'};
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 5px 40px rgba(0,0,0,0.2);

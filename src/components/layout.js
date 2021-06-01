@@ -1,10 +1,6 @@
 // 3rd Party
 import React from "react"
-import styled, {
-    css,
-    keyframes,
-    createGlobalStyle,
-} from "styled-components"
+import styled, { css, keyframes, createGlobalStyle } from "styled-components"
 import { MDXProvider } from "@mdx-js/react"
 
 // Components
@@ -28,7 +24,7 @@ const Layout = ({ location, title, children }) => {
     return (
         <React.Fragment>
             <GlobalStyles />
-            <Wrapper>
+            <Wrapper isMainRoute={!location.pathname.includes(blogPath)}>
                 <MDXProvider components={components}>
                     <Header isVisible={location.pathname.includes(blogPath)} />
                     <div
@@ -38,23 +34,27 @@ const Layout = ({ location, title, children }) => {
                             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
                         }}
                     >
-                        <Clouds index={1} />
-                        <Clouds index={2} />
-                        <Clouds index={3} />
-                        <Clouds index={4} />
-                        <Clouds index={5} />
                         {!location.pathname.includes(blogPath) && (
                             <React.Fragment>
+                                <Clouds index={1} />
+                                <Clouds index={2} />
+                                <Clouds index={3} />
+                                <Clouds index={4} />
+                                <Clouds index={5} />
                                 <Sun />
                                 <Moon />
                             </React.Fragment>
                         )}
                         <StyledMain>{children}</StyledMain>
-                        <GroundOneStyled />
-                        <GroundTwoStyled />
-                        <GroundThreeStyled />
-                        <GroundFourStyled />
-                        <StarsStyled />
+                        {!location.pathname.includes(blogPath) && (
+                            <React.Fragment>
+                                <GroundOneStyled />
+                                <GroundTwoStyled />
+                                <GroundThreeStyled />
+                                <GroundFourStyled />
+                                <StarsStyled />
+                            </React.Fragment>
+                        )}
                     </div>
                     <Footer />
                 </MDXProvider>
@@ -89,7 +89,10 @@ const Wrapper = styled.div`
         width: 100%;
         height: 100%;
         transition: opacity 700ms ease-in-out;
-        background-image: linear-gradient(330deg, #fffcd4, #98e0ef);
+        background-image: ${({ isMainRoute }) =>
+            isMainRoute
+                ? "linear-gradient(330deg, #fffcd4, #98e0ef)"
+                : "linear-gradient(330deg, #FFFFFF, #FFFFFF)"};
         ${({ theme }) => {
             return theme.isDayMode
                 ? css`
@@ -108,7 +111,10 @@ const Wrapper = styled.div`
         width: 100%;
         height: 100%;
         transition: opacity 700ms ease-in-out;
-        background-image: radial-gradient(circle at 60% 50%, #638aba, #222e54);
+        background-image: ${({ isMainRoute }) =>
+            isMainRoute
+                ? "radial-gradient(circle at 60% 50%, #638aba, #222e54)"
+                : "radial-gradient(circle at 60% 50%, var(--colors-background), var(--colors-background))"};
         ${({ theme }) => {
             return theme.isDayMode
                 ? css`
