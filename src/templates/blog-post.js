@@ -35,6 +35,7 @@ const SmallInfo = styled.small`
     font-weight: 300;
     line-height: 1.75rem;
     margin-top: -1.75rem;
+    color: ${({theme}) => theme.isDayMode ? 'initial':'rgba(255,255,255,0.87)'}
 `
 const BlogHeader = styled.div`
     margin-bottom: 1.75rem;
@@ -61,7 +62,6 @@ const BlogPostTemplate = ({ data }) => {
                 <BannerCredit>
                     <Markdown>{post.frontmatter.bannerCredit}</Markdown>
                 </BannerCredit>
-                {/* <SmallInfo>{post.fields.readingTime.text}</SmallInfo> */}
                 <MDXRenderer>{post.body}</MDXRenderer>
                 <BlogFooter>
                     <StyledLink
