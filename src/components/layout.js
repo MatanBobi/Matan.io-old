@@ -64,15 +64,22 @@ const Layout = ({ location, title, children }) => {
 }
 
 const GlobalStyles = createGlobalStyle`
+    *, ::before, ::after {
+        box-sizing: border-box;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
     body[data-theme='light'] {
         --colors-primary: #000000;
         --colors-secondary: #6a737d;
-        --colors-background: rgba(255,255,255,1)
+        --colors-background: rgba(255,255,255,1);
+        --colors-note-background: rgba(0,0,0,0.2);
     }
     body[data-theme='dark'] {
         --colors-primary: #FFFFFF;
         --colors-secondary: #98e0ef;
-        --colors-background: #121212;
+        --colors-background: #0E141B;
+        --colors-note-background: rgba(255,255,255,0.2);
     }
 `
 
@@ -88,13 +95,13 @@ const Wrapper = styled.div`
         left: 0;
         width: 100%;
         height: 100%;
-        transition: opacity 700ms ease-in-out;
-        background-image: ${({ isMainRoute }) =>
+        transition: opacity 700ms ease-in-out, background 500ms ease-in-out;
+        ${({ isMainRoute }) =>
             isMainRoute
-                ? "linear-gradient(330deg, #fffcd4, #98e0ef)"
-                : "linear-gradient(330deg, #FFFFFF, #FFFFFF)"};
-        ${({ theme }) => {
-            return theme.isDayMode
+                ? "background-image: linear-gradient(330deg, #fffcd4, #98e0ef)"
+                : "background: var(--colors-background)"};
+        ${({ theme, isMainRoute }) => {
+            return theme.isDayMode || !isMainRoute
                 ? css`
                       opacity: 1;
                   `
@@ -104,6 +111,8 @@ const Wrapper = styled.div`
         }}
     }
     &::after {
+        ${({ isMainRoute }) =>
+            isMainRoute ? "display: block;" : "display:none;"}
         content: "";
         position: absolute;
         top: 0;

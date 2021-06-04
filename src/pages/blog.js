@@ -5,7 +5,10 @@ import Seo from "../components/seo"
 import { PostCard } from "../components/PostCard"
 
 const PostsWrapper = styled.div`
-    margin: 20px 0 40px;
+    @media only screen and (max-width: 480px) {
+        margin: 20px 0 40px;
+    }
+    margin: 80px 0 60px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 50px;
@@ -22,12 +25,8 @@ class Blog extends React.Component {
                 <Seo title="All posts" />
                 <PostsWrapper>
                     {posts.map(({ node }) => {
-                        const {
-                            banner,
-                            title,
-                            description,
-                            date,
-                        } = node.frontmatter
+                        const { banner, title, description, date } =
+                            node.frontmatter
                         return (
                             <div key={node.slug}>
                                 <Link

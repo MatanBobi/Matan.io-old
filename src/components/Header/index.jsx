@@ -14,7 +14,7 @@ import darkIcon from "../../icons/favicon-dark.png"
 const HeaderWrapper = styled.header`
     padding: 10px 15px;
     position: absolute;
-    top: ${({ isVisible }) => (isVisible ? 0 : "-50px")};
+    top: ${({ isVisible }) => (isVisible ? 0 : "-60px")};
     height: 50px;
     width: 100%;
     transition: all 500ms ease-in-out;
