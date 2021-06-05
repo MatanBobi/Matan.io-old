@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 
 const PostWrapper = styled.div`
     color: ${({theme}) => theme.isDayMode ? '#24292e':'#FFFFFF'};
-    background: ${({theme}) => theme.isDayMode ? '#FFFFFF':'rgba(75, 178, 249, 0.12)'};
+    background: ${({theme}) => theme.isDayMode ? '#9CD1D1':'#2f488c'};
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 5px 40px rgba(0,0,0,0.2);

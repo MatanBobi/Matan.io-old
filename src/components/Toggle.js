@@ -2,13 +2,20 @@ import React, { useRef } from "react"
 import styled from "styled-components"
 
 const Label = styled.label`
+    /* ${({ size }) =>
+        size === "small"
+            ? "transform: scale(0.5) translate(-50%);"
+            : "transform: translate(-50%);"} */
+
     ${({ size }) =>
         size === "small"
             ? "transform: scale(0.5) translate(-50%);"
-            : "transform: translate(-50%);"}
+            : "transform: scale(0.5) translate(-50%);"}
     position: absolute;
-    top: ${({ size }) => (size === "small" ? 0 : "10%")};
-    left: ${({ size }) => (size === "small" ? "calc(100vw - 58px)" : "50%")};
+    /* top: ${({ size }) => (size === "small" ? 0 : "10%")}; */
+    top: ${({ size }) => (size === "small" ? 0 : 0)};
+    /* left: ${({ size }) => (size === "small" ? "calc(100vw - 58px)" : "50%")}; */
+    left: ${({ size }) => (size === "small" ? "calc(100vw - 58px)" : "95%")};
     display: inline-block;
     width: 100px;
     height: 50px;
