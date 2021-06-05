@@ -1,90 +1,111 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
+import styled from "styled-components"
+import Markdown from "react-markdown"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import Seo from "../components/seo"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+const StyledLink = styled(Link)`
+    color: var(--colors-secondary);
+    margin-top: 8px;
+`
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
+const BlogPostWrapper = styled.article`
+    color: var(--colors-primary);
+    max-width: 800px;
+    margin: 40px auto;
+`
 
+const Title = styled.h1`
+    margin-top: 0;
+`
+
+const BannerCredit = styled.div`
+    text-align: right;
+    font-size: 12px;
+    a {
+        color: var(--colors-secondary);
+    }
+`
+
+const SmallInfo = styled.small`
+    display: block;
+    font-size: 90%;
+    font-weight: 300;
+    line-height: 1.75rem;
+    margin-top: -1.75rem;
+    color: ${({theme}) => theme.isDayMode ? 'initial':'rgba(255,255,255,0.87)'}
+`
+const BlogHeader = styled.div`
+    margin-bottom: 1.75rem;
+`
+
+const BlogFooter = styled.div``
+
+const BlogPostTemplate = ({ data }) => {
+    const post = data.mdx
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
-        <h1>{post.frontmatter.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
-          {post.frontmatter.date}
-        </p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio />
-
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={`blog${previous.fields.slug}`} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={`blog${next.fields.slug}`} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </Layout>
+        <React.Fragment>
+            <Seo
+                title={post.frontmatter.title}
+                description={post.frontmatter.description || post.excerpt}
+            />
+            <BlogPostWrapper>
+                <BlogHeader>
+                    <Title>{post.frontmatter.title}</Title>
+                    <SmallInfo>
+                        {post.frontmatter.date} · {post.fields.readingTime.text}
+                    </SmallInfo>
+                </BlogHeader>
+                <Img fluid={post.frontmatter.banner.childImageSharp.fluid} />
+                <BannerCredit>
+                    <Markdown>{post.frontmatter.bannerCredit}</Markdown>
+                </BannerCredit>
+                <MDXRenderer>{post.body}</MDXRenderer>
+                <BlogFooter>
+                    <StyledLink
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={post.fields.editLink}
+                    >
+                        Edit post on GitHub
+                    </StyledLink>
+                </BlogFooter>
+            </BlogPostWrapper>
+        </React.Fragment>
     )
-  }
 }
 
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        author
-      }
+    query BlogPostBySlug($slug: String!) {
+        site {
+            siteMetadata {
+                title
+                author
+            }
+        }
+        mdx(slug: { eq: $slug }) {
+            id
+            excerpt(pruneLength: 160)
+            body
+            fields {
+                editLink
+                readingTime {
+                    text
+                }
+            }
+            frontmatter {
+                title
+                date(formatString: "MMMM DD, YYYY")
+                description
+                banner {
+                    ...bannerImage720
+                }
+                bannerCredit
+            }
+        }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-      }
-    }
-  }
 `

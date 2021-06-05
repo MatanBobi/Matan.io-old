@@ -1,15 +1,26 @@
 import React, { useRef } from "react"
-import styled, { keyframes, css } from "styled-components"
+import styled from "styled-components"
 
 const Label = styled.label`
+    /* ${({ size }) =>
+        size === "small"
+            ? "transform: scale(0.5) translate(-50%);"
+            : "transform: translate(-50%);"} */
+
+    ${({ size }) =>
+        size === "small"
+            ? "transform: scale(0.5) translate(-50%);"
+            : "transform: scale(0.5) translate(-50%);"}
     position: absolute;
-    top: 10%;
-    left: 50%;
+    /* top: ${({ size }) => (size === "small" ? 0 : "10%")}; */
+    top: ${({ size }) => (size === "small" ? 0 : 0)};
+    /* left: ${({ size }) => (size === "small" ? "calc(100vw - 58px)" : "50%")}; */
+    left: ${({ size }) => (size === "small" ? "calc(100vw - 58px)" : "95%")};
     display: inline-block;
     width: 100px;
     height: 50px;
-    z-index: 2;
-    transform: translate(-50%);
+    z-index: 6;
+    transition: all 500ms ease-in-out;
 
     input {
         opacity: 0;
@@ -19,7 +30,7 @@ const Label = styled.label`
 `
 
 const Slider = styled.span`
-    position: absolute;
+    position: fixed;
     cursor: pointer;
     top: 0;
     left: 0;
@@ -31,12 +42,12 @@ const Slider = styled.span`
     border-radius: 34px;
     z-index: 1;
     // box-shadow: inset 7px 0 9px -7px #5ea3b6;
-    &:focus{
+    &:focus {
         outline: none;
     }
 
     :before {
-        position: absolute;
+        position: fixed;
         border-radius: 50%;
         content: "";
         height: 40px;
@@ -49,7 +60,7 @@ const Slider = styled.span`
     }
 `
 const String = styled.div`
-    position: absolute;
+    position: fixed;
     bottom: 15px;
     left: 22px;
 `
@@ -81,8 +92,6 @@ const Checkbox = styled.input`
     }
 
     :checked + ${Slider}:before {
-        -webkit-transform: translateX(50px);
-        -ms-transform: translateX(50px);
         transform: translateX(50px);
         background-color: #fffcd4;
         box-shadow: 0px 0px 16px 5px rgba(255, 252, 212, 0.75);
@@ -95,13 +104,13 @@ const keyframesForAnimation = [
     { transform: "translateY(0)" },
 ]
 
-const Toggle = ({ toggleDayMode, isDayMode }) => {
+const Toggle = ({ toggleDayMode, isDayMode, size }) => {
     const stringRef = useRef()
     return (
-        <Label>
+        <Label size={size}>
             <Checkbox
                 type="checkbox"
-                onClick={() => {
+                onChange={() => {
                     stringRef.current.animate(keyframesForAnimation, {
                         duration: 800,
                         easing: "cubic-bezier(.5,-.75,.2,2)",
