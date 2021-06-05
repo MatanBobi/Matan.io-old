@@ -1,7 +1,3 @@
-// custom typefaces
-require("typeface-montserrat")
-require("typeface-merriweather")
-
 const React = require("react")
 const Layout = require("./src/components/layout").default
 const { RootProviders } = require("./src/components/RootProviders")
