@@ -1,5 +1,5 @@
 // 3rd Party
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import PropTypes from "prop-types"
 import styled, { ThemeContext } from "styled-components"
 import { Link } from "gatsby"
@@ -13,14 +13,15 @@ import darkIcon from "../../icons/favicon-dark.png"
 
 const HeaderWrapper = styled.header`
     padding: 10px 15px;
-    position: absolute;
+    position: ${({ isVisible }) => (isVisible ? "sticky" : "absolute")};
     top: ${({ isVisible }) => (isVisible ? 0 : "-60px")};
     height: 50px;
     width: 100%;
     transition: all 500ms ease-in-out;
-    z-index: 2;
+    z-index: 6;
     display: flex;
     align-items: center;
+    background: var(--colors-background);
 `
 
 const FullNameLink = styled(Link)`
