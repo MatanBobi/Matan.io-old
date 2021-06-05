@@ -103,7 +103,7 @@ const Toggle = ({ toggleDayMode, isDayMode, size }) => {
         <Label size={size}>
             <Checkbox
                 type="checkbox"
-                onClick={() => {
+                onChange={() => {
                     stringRef.current.animate(keyframesForAnimation, {
                         duration: 800,
                         easing: "cubic-bezier(.5,-.75,.2,2)",
