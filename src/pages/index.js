@@ -1,11 +1,10 @@
 import React, { Fragment } from "react"
 import Image from "gatsby-image"
-import { graphql, Link, StaticQuery } from "gatsby"
+import { graphql, StaticQuery } from "gatsby"
 import styled, { keyframes, css } from "styled-components"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Button from "../components/button"
 
 // Icons
 import SunIcon from "../icons/sun.svg"
@@ -26,7 +25,7 @@ class IndexPage extends React.Component {
                 <StaticQuery
                     query={indexQuery}
                     render={data => {
-                        const { author, social } = data.site.siteMetadata
+                        const { author } = data.site.siteMetadata
 
                         return (
                             <Fragment>
@@ -75,15 +74,6 @@ class IndexPage extends React.Component {
                                         <Description>
                                             Frontend developer
                                         </Description>
-                                        {/*<StyledLink to="/blog/">*/}
-                                        {/*    <Button*/}
-                                        {/*        marginTop="35px"*/}
-                                        {/*        radius="40px"*/}
-                                        {/*        display="inline-block"*/}
-                                        {/*    >*/}
-                                        {/*        Visit blog*/}
-                                        {/*    </Button>*/}
-                                        {/*</StyledLink>*/}
                                     </DataContainer>
                                 </IndexWrapper>
                                 <GroundOneStyled />
@@ -438,12 +428,6 @@ const DataContainer = styled.div`
                   }
               `
     }};
-`
-
-const StyledLink = styled(Link)`
-    text-decoration: none;
-    width: max-content;
-    box-shadow: none;
 `
 
 const indexQuery = graphql`

@@ -12,6 +12,7 @@ import { withTheme } from "styled-components"
 import { useStaticQuery, graphql } from "gatsby"
 import darkFavicon from "../icons/favicon-dark.png"
 import lightFavicon from "../icons/favicon-light.png"
+import social from '../../static/social.png'
 
 function SEO({ description, lang, meta, keywords, title, theme }) {
     const { site } = useStaticQuery(
@@ -77,6 +78,14 @@ function SEO({ description, lang, meta, keywords, title, theme }) {
                 {
                     name: `twitter:description`,
                     content: metaDescription,
+                },
+                {
+                    name: `og:image`,
+                    content: social,
+                },
+                {
+                    name: `twitter:image`,
+                    content: social,
                 },
             ]
                 .concat(
