@@ -1,8 +1,7 @@
 // 3rd Party
 import React, { useEffect } from "react"
-import { Link } from "gatsby"
 import styled, { css, ThemeProvider } from "styled-components"
-
+import { createGlobalStyle } from "styled-components"
 // Components
 import Footer from "./Footer.js"
 import Toggle from "./Toggle"
@@ -11,6 +10,13 @@ import useToggle from "../hooks/useToggle"
 
 // Utils
 import { rhythm, scale } from "../utils/typography"
+
+const GlobalStyle = createGlobalStyle`
+    :root {
+    --primary-color: ${({ theme }) =>
+        theme.isDayMode ? "#5ebccf" : "#485f9c"};
+    }
+`
 
 const Layout = ({ location, title, children }) => {
     const rootPath = `${__PATH_PREFIX__}/`
@@ -46,52 +52,9 @@ const Layout = ({ location, title, children }) => {
         isDayMode,
     }
 
-    let header
-
-    if (location.pathname === rootPath || location.pathname === blogPath) {
-        header = (
-            <h1
-                style={{
-                    ...scale(1.5),
-                    marginBottom: rhythm(1.5),
-                    marginTop: 0,
-                }}
-            >
-                {/*<Link*/}
-                {/*style={{*/}
-                {/*boxShadow: `none`,*/}
-                {/*textDecoration: `none`,*/}
-                {/*color: `inherit`,*/}
-                {/*}}*/}
-                {/*to={location.pathname === blogPath ? `/blog/` : `/`}*/}
-                {/*>*/}
-                {/*{title}*/}
-                {/*</Link>*/}
-            </h1>
-        )
-    } else {
-        header = (
-            <h3
-                style={{
-                    fontFamily: `Montserrat, sans-serif`,
-                    marginTop: 0,
-                }}
-            >
-                <Link
-                    style={{
-                        boxShadow: `none`,
-                        textDecoration: `none`,
-                        color: `inherit`,
-                    }}
-                    to={`/blog/`}
-                >
-                    {title}
-                </Link>
-            </h3>
-        )
-    }
     return (
         <ThemeProvider theme={theme}>
+            <GlobalStyle />
             <Wrapper>
                 <div
                     style={{
@@ -107,7 +70,6 @@ const Layout = ({ location, title, children }) => {
                         toggleDayMode={() => toggleDayMode()}
                         isDayMode={isDayMode}
                     />
-                    <header>{header}</header>
                     <main>{children}</main>
                 </div>
                 <Footer />
