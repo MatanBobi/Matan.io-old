@@ -39,7 +39,7 @@ class NotFoundPage extends React.Component {
                 <NotFoundWrapper>
                     <SEO title="404: Not Found" />
                     <StyledNotFoundImage />
-                    <h1>Oops, that didn't supposed to happen!</h1>
+                    <h1>Oops, that didn't suppose to happen!</h1>
                 </NotFoundWrapper>
             </Layout>
         )
