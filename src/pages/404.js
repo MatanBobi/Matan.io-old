@@ -9,6 +9,8 @@ import NotFoundImage from "../icons/not-found-image.svg"
 const StyledNotFoundImage = styled(NotFoundImage)`
     height: 60%;
     width: 60%;
+    max-width: 500px;
+
     .animated-fill {
         transition: fill 250ms ease-in-out;
     }
@@ -26,6 +28,16 @@ const NotFoundWrapper = styled.div`
 
     @media (max-width: 600px) {
         flex-direction: column;
+        
+        ${StyledNotFoundImage} {
+            max-width: 244px;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-top: 2.5rem;
+        }
     }
 `
 
